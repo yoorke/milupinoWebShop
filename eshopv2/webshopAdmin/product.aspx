@@ -48,7 +48,7 @@
                 <div class="btn-group">
                     <asp:Button ID="btnSave" runat="server" Text="Sačuvaj" OnClick="btnSave_Click" CssClass="btn btn-primary" />
                     <asp:Button ID="btnSaveClose" runat="server" Text="Sačuvaj i zatvori" OnClick="btnSaveClose_Click" CssClass="btn btn-primary" />
-                    <asp:Button ID="btnClose" runat="server" Text="Zatvori" OnClick="btnClose_Click" CssClass="btn btn-primary" />
+                    <asp:Button ID="btnClose" runat="server" Text="Zatvori" OnClick="btnClose_Click" CssClass="btn btn-primary" CausesValidation="false" />
                 </div><!--btn-group-->
             </div><!--col-->
         </div><!--row-->
@@ -75,6 +75,7 @@
                                     <div class="form-group">
                                         <label for="txtCode">Šifra:</label>
                                         <asp:TextBox ID="txtCode" runat="server" CssClass="form-control"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="requiredFieldValidator1" runat="server" ControlToValidate="txtCode" ErrorMessage="Šifra je obavezan podatak" Display="Dynamic"></asp:RequiredFieldValidator>
                                     </div><!--form-group-->
                                     <div class="form-group">
                                         <label for="txtEan">Ean:</label>
@@ -101,14 +102,22 @@
                                         <%--<asp:ImageButton ID="btnAddManufacturer" runat="server" ImageUrl="../images/add_icon.png" OnClientClick="ShowModalPopupManufacturer();return false;" />--%>
                                     </div><!--form-group-->
                                     <div class="form-group">
-                                        <label role="txtName">Naziv:</label>
-                                        <asp:TextBox ID="txtName" runat="server" CssClass="form-control"></asp:TextBox>                
+                                        <label for="txtName">Naziv:</label>
+                                        <asp:TextBox ID="txtName" runat="server" CssClass="form-control"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="requiredFieldValidator2" runat="server" ControlToValidate="txtName" ErrorMessage="Naziv je obavezan podatak" Display="Dynamic"></asp:RequiredFieldValidator>
                                     </div><!--form-group-->
                                     <div class="form-group">
-                                        <label for="txtDescription">Opis:</label>
-                                        <%--<asp:TextBox ID="txtDescription" runat="server" TextMode="MultiLine" CssClass="form-control"></asp:TextBox>--%>
-                                        <CKEditor:CKEditorControl ID="txtDescription" runat="server" BasePath="/ckeditor" Height="300px" CssClass="form-control"></CKEditor:CKEditorControl>
-                                    </div><!--form-group-->
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="form-group">
+                                                    <asp:CheckBox ID="chkApproved" runat="server" Text="Odobren" CssClass="checkbox" />
+                                                    <asp:CheckBox ID="chkActive" runat="server" Text="Aktivan" CssClass="checkbox" />
+                                                    <asp:CheckBox ID="chkLocked" runat="server" Text="Zaključan" CssClass="checkbox" />
+                                                    <asp:CheckBox ID="chkInStock" runat="server" Text="Na stanju" CssClass="checkbox" />
+                                                </div><!--form-group-->
+                                            </div><!--col-->
+                                        </div><!--row-->
+                                    </div>
                                 </div><!--form-->
                             </div><!--col-->
                             <div class="col-lg-6">
@@ -128,10 +137,12 @@
                                     <div class="form-group">
                                         <label for="txtPrice">Cena:</label>
                                         <asp:TextBox ID="txtPrice" runat="server" CssClass="form-control text-right"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="requiredFieldValidator3" runat="server" ControlToValidate="txtPrice" ErrorMessage="Cena je obavezan podatak" Display="Dynamic"></asp:RequiredFieldValidator>
                                     </div><!--form-group-->
                                     <div class="form-group">
                                         <label for="txtWebPrice">Web cena:</label>
                                         <asp:TextBox ID="txtWebPrice" runat="server" CssClass="form-control text-right"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="reqiredFieldValidator4" runat="server" ControlToValidate="txtWebPrice" ErrorMessage="Web cena je obavezan podatak" Display="Dynamic"></asp:RequiredFieldValidator>
                                     </div><!--form-group-->
                                     <div class="form-group">
                                         <label for="cmbVat">PDV:</label>
@@ -154,29 +165,34 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                        <asp:CheckBox ID="chkApproved" runat="server" Text="Odobren" CssClass="checkbox" />
-                                        <asp:CheckBox ID="chkActive" runat="server" Text="Aktivan" CssClass="checkbox" />
-                                        <asp:CheckBox ID="chkLocked" runat="server" Text="Zaključan" CssClass="checkbox" />
-                                        <asp:CheckBox ID="chkInStock" runat="server" Text="Na stanju" CssClass="checkbox" />
-                                    </div><!--form-group-->
-                                </div><!--col-->
-                        </div><!--row-->
+                                    <label for="txtDescription">Opis:</label>
+                                    <asp:TextBox ID="txtDescription" runat="server" TextMode="MultiLine" CssClass="form-control"></asp:TextBox>
+                                    <%--<CKEditor:CKEditorControl ID="txtDescription" runat="server" BasePath="/ckeditor" Height="300px" CssClass="form-control"></CKEditor:CKEditorControl>--%>
+                                </div><!--form-group-->
+                            </div>
+                        </div>
+                        
                     </div><!--tab-pane-->
                     <div class="tab-pane" id="images">
                         <div class="row">
                             <div class="col-lg-5">
                                 <asp:Repeater ID="rptImages" runat="server" OnItemCommand="rptImages_ItemCommand" OnItemDataBound="rptImages_ItemDataBound">
                                     <ItemTemplate>
-                                        <div class="productImage">
-                                  
-                                            <asp:Image ID="imgProduct" runat="server" ImageUrl='<%#Container.DataItem %>' Width="50px" Height="50px" BorderStyle="Solid" />
-                                            <asp:Label ID="lblImageUrl" runat="server" Text='<%# Container.DataItem %>' CssClass="imageUrl"></asp:Label>
-                                            <asp:LinkButton ID="btnDelete" CommandName="delete" runat="server" Text="Obriši"></asp:LinkButton>
+                                        <div class="productImage">                                  
+                                            <asp:Image ID="imgProduct" runat="server" ImageUrl='<%#Eval("imageUrl") %>' />
+                                            <asp:Label ID="lblImageUrl" runat="server" Text='<%# Eval("imageUrl") %>' CssClass="imageUrl"></asp:Label>
+                                            <asp:TextBox ID="txtSortOrder" runat="server" CssClass="sortOrder" Text='<%#Eval("sortOrder") %>'></asp:TextBox>
+                                            <asp:LinkButton ID="btnDelete" CommandName="delete" runat="server" Text="Obriši" CssClass="deleteIcon"></asp:LinkButton>
                                         </div><!--productImage-->
                                     </ItemTemplate>
                                 </asp:Repeater>
                             </div><!--col-->
                         </div><!--row-->
+                        <div class="row margin-top-2">
+                            <div class="col-lg-12">
+                                Unos nove slike
+                            </div>
+                        </div>
                         <div class="row margin-top-05">
                             <div class="col-lg-5">
                                 <asp:FileUpload ID="fluImage" runat="server" />
@@ -428,5 +444,16 @@
             $("[id*=TabName]").val($(this).attr("href").replace("#", ""));
         });
     });
+</script>
+<script>
+    $(document).ready(function () {
+        $('[id*=txtPrice]').change(function () {
+            if($('[id*=txtWebPrice]').val() == '')
+                $('[id*=txtWebPrice]').val($('[id*=txtPrice]').val());
+        })
+
+        CKEDITOR.replace('<%=txtDescription.ClientID%>', { filebrowserUploadUrl: 'uploadImage.ashx' });
+        CKEDITOR.config.height = 300;
+    })
 </script>
 </asp:Content>

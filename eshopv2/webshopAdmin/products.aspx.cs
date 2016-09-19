@@ -76,7 +76,8 @@ namespace webshopAdmin
         private void loadIntoForm()
         {
             CategoryBL categoryBL = new CategoryBL();
-            cmbCategory.DataSource = categoryBL.GetCategories();
+            //cmbCategory.DataSource = categoryBL.GetCategories();
+            cmbCategory.DataSource = categoryBL.GetNestedCategoriesDataTable();
             cmbCategory.DataTextField = "name";
             cmbCategory.DataValueField = "categoryID";
             cmbCategory.DataBind();

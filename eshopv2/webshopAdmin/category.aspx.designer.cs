@@ -166,15 +166,6 @@ namespace webshopAdmin {
         protected global::System.Web.UI.WebControls.DropDownList cmbCategoryBanner;
         
         /// <summary>
-        /// txtDescription control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::CKEditor.NET.CKEditorControl txtDescription;
-        
-        /// <summary>
         /// chkActive control.
         /// </summary>
         /// <remarks>
@@ -182,6 +173,15 @@ namespace webshopAdmin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox chkActive;
+        
+        /// <summary>
+        /// txtDescription control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::CKEditor.NET.CKEditorControl txtDescription;
         
         /// <summary>
         /// btnSavePositions control.

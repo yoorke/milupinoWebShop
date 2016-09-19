@@ -68,13 +68,13 @@
                                 <asp:TextBox ID="txtUrl" runat="server" Text='<%#Eval("url") %>' CssClass="form-control"></asp:TextBox>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Sortiraj" ControlStyle-Width="20px">
+                        <asp:TemplateField HeaderText="Sortiraj" ControlStyle-Width="50px" ItemStyle-Width="50px">
                             <ItemTemplate>
                                 <asp:ImageButton ID="btnSortUp" runat="server" ImageUrl="images/arrow_up.png" CommandName="sortUp" />
                                 <asp:ImageButton ID="btnSortDown" runat="server" ImageUrl="images/arrow_down.png" CommandName="sortDown" />
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:CommandField ShowDeleteButton="true" DeleteImageUrl="images/delete_icon.png" ButtonType="Image" ControlStyle-Width="20px" />
+                        <asp:CommandField ShowDeleteButton="true" DeleteImageUrl="images/delete_icon.png" ButtonType="Image" ItemStyle-Width="20px" />
                     </Columns>
                 </asp:GridView>
             </div><!--col-->

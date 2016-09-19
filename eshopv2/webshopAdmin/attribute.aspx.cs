@@ -95,7 +95,7 @@ namespace webshopAdmin
 
         protected void btnClose_Click(object sender, EventArgs e)
         {
-            
+            Response.Redirect("~/" + ConfigurationManager.AppSettings["webshopAdminUrl"] + "/attributes.aspx");
         }
 
         protected void btnSaveSort_Click(object sender, EventArgs e)

@@ -58,7 +58,7 @@ namespace webshopAdmin
             List<SliderItem> images = (List<SliderItem>)ViewState["images"];
 
             for (int i = 0; i < images.Count; i++)
-                if (images[i].ImageUrl == ((Label)dgvImages.Rows[e.RowIndex].FindControl("lblImageUrl")).Text)
+                if (images[i].ImageUrl == ((Image)dgvImages.Rows[e.RowIndex].FindControl("imgSliderItem")).ImageUrl)
                 {
                     images.RemoveAt(i);
                     break;

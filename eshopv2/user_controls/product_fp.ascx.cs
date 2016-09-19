@@ -54,10 +54,10 @@ namespace eshopv2.user_controls
         private void setValues()
         {
             //imgPhoto.ImageUrl = _product.Images[0] != "/images/no-image.jpg" ? _product.Images[0].Substring(0, _product.Images[0].IndexOf(".")) + "-list.jpg" : _product.Images[0];
-            string filename = _product.Images[0].Substring(0, _product.Images[0].LastIndexOf('.'));
-            string extension = _product.Images[0].Substring(_product.Images[0].LastIndexOf('.'));
+            string filename = _product.Images[0].ImageUrl.Substring(0, _product.Images[0].ImageUrl.LastIndexOf('.'));
+            string extension = _product.Images[0].ImageUrl.Substring(_product.Images[0].ImageUrl.LastIndexOf('.'));
             //imgPhoto.ImageUrl = _product.Images[0] != "/images/no-image.jpg" ? ("~/" + _product.Images[0].Substring(0, _product.Images[0].IndexOf(".")) + "-home.jpg") : "~/" + _product.Images[0];
-            imgPhoto.ImageUrl = new ProductBL().CreateImageDirectory(int.Parse(_product.Images[0].Substring(0, _product.Images[0].LastIndexOf('.')))) + filename + "-" + ConfigurationManager.AppSettings["listName"] + extension;
+            imgPhoto.ImageUrl = new ProductBL().CreateImageDirectory(int.Parse(_product.Images[0].ImageUrl.Substring(0, _product.Images[0].ImageUrl.LastIndexOf('.')))) + filename + "-" + ConfigurationManager.AppSettings["listName"] + extension;
             lblBrand.Text = _product.Brand.Name;
             lblName.Text = _product.Name;
             string url = _product.Url;  //"/product.aspx?productUrl=" + _product.ProductID;

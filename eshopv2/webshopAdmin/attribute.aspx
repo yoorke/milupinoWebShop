@@ -13,7 +13,7 @@
                 <div class="btn-group">
                     <asp:Button ID="btnSaveAttribute" runat="server" Text="Sačuvaj" OnClick="btnSaveAttribute_Click" CssClass="btn btn-primary" />                
                     <asp:Button ID="btnSaveClose" runat="server" Text="Sačuvaj i zatvori" OnClick="btnSaveClose_Click" CssClass="btn btn-default" />
-                    <asp:Button ID="btnClose" runat="server" Text="Zatvori" OnClick="btnClose_Click" CssClass="btn btn-default" />
+                    <asp:Button ID="btnClose" runat="server" Text="Zatvori" OnClick="btnClose_Click" CssClass="btn btn-default" CausesValidation="false"/>
                     
                 </div>
             </div>

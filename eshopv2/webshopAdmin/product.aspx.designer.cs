@@ -166,6 +166,15 @@ namespace webshopAdmin {
         protected global::System.Web.UI.WebControls.TextBox txtCode;
         
         /// <summary>
+        /// requiredFieldValidator1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator requiredFieldValidator1;
+        
+        /// <summary>
         /// txtEan control.
         /// </summary>
         /// <remarks>
@@ -211,13 +220,49 @@ namespace webshopAdmin {
         protected global::System.Web.UI.WebControls.TextBox txtName;
         
         /// <summary>
-        /// txtDescription control.
+        /// requiredFieldValidator2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::CKEditor.NET.CKEditorControl txtDescription;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator requiredFieldValidator2;
+        
+        /// <summary>
+        /// chkApproved control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkApproved;
+        
+        /// <summary>
+        /// chkActive control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkActive;
+        
+        /// <summary>
+        /// chkLocked control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkLocked;
+        
+        /// <summary>
+        /// chkInStock control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkInStock;
         
         /// <summary>
         /// imgProduct control.
@@ -274,6 +319,15 @@ namespace webshopAdmin {
         protected global::System.Web.UI.WebControls.TextBox txtPrice;
         
         /// <summary>
+        /// requiredFieldValidator3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator requiredFieldValidator3;
+        
+        /// <summary>
         /// txtWebPrice control.
         /// </summary>
         /// <remarks>
@@ -281,6 +335,15 @@ namespace webshopAdmin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtWebPrice;
+        
+        /// <summary>
+        /// reqiredFieldValidator4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqiredFieldValidator4;
         
         /// <summary>
         /// cmbVat control.
@@ -310,40 +373,13 @@ namespace webshopAdmin {
         protected global::System.Web.UI.WebControls.TextBox txtUpdateDate;
         
         /// <summary>
-        /// chkApproved control.
+        /// txtDescription control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chkApproved;
-        
-        /// <summary>
-        /// chkActive control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chkActive;
-        
-        /// <summary>
-        /// chkLocked control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chkLocked;
-        
-        /// <summary>
-        /// chkInStock control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chkInStock;
+        protected global::System.Web.UI.WebControls.TextBox txtDescription;
         
         /// <summary>
         /// rptImages control.

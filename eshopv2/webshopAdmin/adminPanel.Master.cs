@@ -14,6 +14,7 @@ using System.Web.Services;
 using eshopBL;
 using System.Web.Configuration;
 using Newtonsoft.Json;
+using System.Security.Principal;
 
 namespace webshopAdmin
 {
@@ -23,7 +24,8 @@ namespace webshopAdmin
         {
             if(!Page.IsPostBack)
             {
-                loadMenu();
+                if(Page.User.Identity.IsAuthenticated)
+                    loadMenu();
             }
         }
 

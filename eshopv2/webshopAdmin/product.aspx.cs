@@ -95,6 +95,10 @@ namespace webshopAdmin
                     { 
                         ViewState.Add("pageTitle", "Novi proizvod");
                         txtDescription.Text = @"<p><span style='font-size:10px;color:#696969'>" + ConfigurationManager.AppSettings["productDescription"] + "</span></p>";
+                        imgProduct.Visible = false;
+                        imgLarge.Visible = false;
+                        imgHome.Visible = false;
+                        imgThumb.Visible = false;
                     }
 
                     //ViewState["dropDownCollection"] = null;
@@ -155,6 +159,7 @@ namespace webshopAdmin
             cmbSupplier.DataTextField = "name";
             cmbSupplier.DataValueField = "supplierID";
             cmbSupplier.DataBind();
+            cmbSupplier.SelectedValue = "0";
         }
 
         private void loadManufacturers()
@@ -235,8 +240,8 @@ namespace webshopAdmin
                 ViewState.Add("images", product.Images);
                 loadImages();
 
-                string imageUrl = product.Images[0].Substring(0, product.Images[0].LastIndexOf("."));
-                string extension = product.Images[0].Substring(product.Images[0].LastIndexOf('.'));
+                string imageUrl = product.Images[0].ImageUrl.Substring(0, product.Images[0].ImageUrl.LastIndexOf("."));
+                string extension = product.Images[0].ImageUrl.Substring(product.Images[0].ImageUrl.LastIndexOf('.'));
                 string directory = new ProductBL().CreateImageDirectory(int.Parse(imageUrl));
                 imgProduct.ImageUrl = directory + imageUrl + "-" + ConfigurationManager.AppSettings["mainName"] + extension;
                 imgHome.ImageUrl = directory + imageUrl + "-" + ConfigurationManager.AppSettings["listName"] + extension;
@@ -254,7 +259,7 @@ namespace webshopAdmin
             {
                 
                 string extension = fluImage.FileName.Substring(fluImage.FileName.LastIndexOf('.'));
-                string fullpath = Server.MapPath("~") + new ProductBL().CreateNewImageName(ViewState["images"] != null ? ((List<string>)ViewState["images"]).Count : 0) + extension;
+                string fullpath = Server.MapPath("~") + new ProductBL().CreateNewImageName(ViewState["images"] != null ? ((List<ProductImage>)ViewState["images"]).Count : 0) + extension;
 
 
                 //fluImage.SaveAs(Server.MapPath("~") + "/images/" + fluImage.FileName);
@@ -276,15 +281,15 @@ namespace webshopAdmin
                 //thumb = eshopUtilities.Common.CreateThumb(original, 50, 40);
                 //thumb.Save(path + fluImage.FileName.Substring(0, fluImage.FileName.IndexOf(".jpg")) + "-thumb.jpg");
 
-                List<string> images;
+                List<ProductImage> images;
                 if (ViewState["images"] != null)
-                    images = (List<string>)ViewState["images"];
+                    images = (List<ProductImage>)ViewState["images"];
                 else
-                    images = new List<string>();
+                    images = new List<ProductImage>();
 
                 bool exists = new ProductBL().CreateProductImages(fullpath);
                 if(exists)
-                    images.Add(fullpath.Substring(fullpath.LastIndexOf('/')));
+                    images.Add(new ProductImage(fullpath.Substring(fullpath.LastIndexOf('/') + 1), images.Count + 1));
 
                 ViewState.Add("images",images);
 
@@ -294,9 +299,9 @@ namespace webshopAdmin
 
         private void loadImages()
         {
-            List<string> images = null;
+            List<ProductImage> images = null;
             if (ViewState["images"] != null)
-                images = (List<string>)ViewState["images"];
+                images = (List<ProductImage>)ViewState["images"];
 
             rptImages.DataSource = images;
             rptImages.DataBind();
@@ -384,11 +389,11 @@ namespace webshopAdmin
             //images
             if (rptImages.Items.Count > 0)
             {
-                product.Images = new List<string>();
-                List<string> images = (List<string>)ViewState["images"];
-                foreach (string imageUrl in images)
+                product.Images = new List<ProductImage>();
+                //List<ProductImage> images = (List<ProductImage>)ViewState["images"];
+                foreach (RepeaterItem productImage in rptImages.Items)
                 {
-                    product.Images.Add(imageUrl);
+                    product.Images.Add(new ProductImage(((Label)productImage.FindControl("lblImageUrl")).Text, int.Parse(((TextBox)productImage.FindControl("txtSortOrder")).Text)));
                 }
             }
 
@@ -559,12 +564,12 @@ namespace webshopAdmin
                     {
                         string imageUrl = ((Label)e.Item.FindControl("lblImageUrl")).Text;
 
-                        List<string> images=(List<string>)ViewState["images"];
-                        foreach (string url in images)
+                        List<ProductImage> images=(List<ProductImage>)ViewState["images"];
+                        foreach (ProductImage productImage in images)
                         {
-                            if (url == imageUrl)
+                            if (productImage.ImageUrl == imageUrl)
                             {
-                                images.Remove(url);
+                                images.Remove(productImage);
                                 break;
                             }
                         }

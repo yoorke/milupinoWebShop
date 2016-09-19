@@ -37,7 +37,7 @@
                 <div id="tab-content"  class="tab-content">
                     <div class="tab-pane active" id="kategorija">
                         <div class="row">
-                            <div class="col-lg-5">
+                            <div class="col-md-4">
                                 <asp:HiddenField ID="lblCategoryID" runat="server" />
                                 <div role="form">
                                     <div class="form-group">
@@ -58,6 +58,11 @@
                                         <label for="txtImageUrl">Image url:</label>
                                         <asp:TextBox ID="txtImageUrl" runat="server" CssClass="form-control" placeholder="ImageUrl"></asp:TextBox>
                                     </div><!--form-group-->
+                                    
+                                </div><!--form-->
+                            </div><!--col-->
+                            <div class="col-md-4">
+                                <div role="form">
                                     <div class="form-group">
                                         <label for="txtSortOrder">Redni broj:</label>
                                         <asp:TextBox ID="txtSortOrder" runat="server" CssClass="form-control" placeholder="Redni broj"></asp:TextBox>
@@ -72,24 +77,26 @@
                                         <label for="cmbCategoryBanner">Baner:</label>
                                         <asp:DropDownList ID="cmbCategoryBanner" runat="server" CssClass="form-control"></asp:DropDownList>
                                     </div> 
-                                </div><!--form-->
-                            </div><!--col-->
+                                    <div class="form-group">
+                                        <label>&nbsp;</label>
+                                        <asp:CheckBox ID="chkActive" runat="server" CssClass="checkbox" Text="Aktivan" Checked="true" />
+                                    </div>
+                                </div>
+                            </div>
                         </div><!--row-->
                         <div class="row">
                             <div class="col-lg-12">
                                 <div role="form">
                                     <div class="form-group">
                                         <label for="txtDescription">Opis: </label>
-                                        <CKEditor:CKEditorControl ID="txtDescription" runat="server" BasePath="/ckeditor" Height="300px" CssClass="form-control"></CKEditor:CKEditorControl>
+                                        <CKEditor:CKEditorControl ID="txtDescription" runat="server" BasePath="/ckeditor" Height="500px" CssClass="form-control"></CKEditor:CKEditorControl>
                                         <%--<asp:TextBox ID="txtDescription" runat="server" Width="500px" Height="300px" TextMode="MultiLine"></asp:TextBox>--%>
                                     </div><!--form-group-->
                                 </div>  
                             </div><!--col-->
                         </div><!--row-->
                         <div class="row">
-                            <div class="col-lg-12">
-                                <asp:CheckBox ID="chkActive" runat="server" CssClass="checkbox" Text="Aktivan" />
-                            </div>
+                            
                         </div>
                     </div><!--kategorija-->
                     <div class="tab-pane" id="atributi">
@@ -147,8 +154,13 @@
                             
                         </div><!--row-->
                         <div class="row margin-top-05">
-                            <div class="col-lg-12">
+                            <div class="col-lg-5">
                                 <asp:DropDownList ID="cmbAttribute" runat="server" CssClass="form-control"></asp:DropDownList>
+                                
+                            </div>
+                        </div>
+                        <div class="row margin-top-05">
+                            <div class="col-lg-12">
                                 <asp:Button ID="btnAddAttribute" Text="Dodaj" OnClick="btnAddAttribute_Click" runat="server" CssClass="btn btn-primary" />
                             </div>
                         </div>

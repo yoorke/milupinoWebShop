@@ -12,14 +12,15 @@ using System.Web.UI.WebControls.WebParts;
 using System.Xml.Linq;
 using System.Collections.Generic;
 using eshopBL;
+using eshopBE;
 
 namespace eshopv2.user_controls
 {
     public partial class ProductImages : System.Web.UI.UserControl
     {
-        private List<string> _images;
+        private List<ProductImage> _images;
 
-        public List<string> Images
+        public List<ProductImage> Images
         {
             get { return _images; }
             set { _images = value; }
@@ -36,8 +37,8 @@ namespace eshopv2.user_controls
             if (_images != null)
             {
                 //imgMain.ImageUrl = !_images[0].Contains("no-image.jpg") ? _images[0].Substring(0, _images[0].IndexOf(".jpg")) + "-main.jpg" : _images[0];
-                string filename = _images[0].Substring(0, _images[0].LastIndexOf('.'));
-                string extension = _images[0].Substring(_images[0].LastIndexOf('.'));
+                string filename = _images[0].ImageUrl.Substring(0, _images[0].ImageUrl.LastIndexOf('.'));
+                string extension = _images[0].ImageUrl.Substring(_images[0].ImageUrl.LastIndexOf('.'));
                 string directory = new ProductBL().CreateImageDirectory(int.Parse(filename));
                 //imgMain.ImageUrl = !_images[0].Contains("no-image.jpg") ? ("~/" + _images[0].Substring(0, _images[0].IndexOf(".jpg")) + "-large.jpg") : "~/" + _images[0];
                 imgMain.ImageUrl = new ProductBL().CreateImageDirectory(int.Parse(filename)) + filename + "-" + ConfigurationManager.AppSettings["mainName"] + extension;
@@ -48,8 +49,8 @@ namespace eshopv2.user_controls
                 {
                     for (int i = 0; i < _images.Count; i++)
                     {
-                        string thumbFilename = _images[i].Substring(0, _images[i].LastIndexOf('.'));
-                        string thumbExtension = _images[i].Substring(_images[i].LastIndexOf('.'));
+                        string thumbFilename = _images[i].ImageUrl.Substring(0, _images[i].ImageUrl.LastIndexOf('.'));
+                        string thumbExtension = _images[i].ImageUrl.Substring(_images[i].ImageUrl.LastIndexOf('.'));
                         ImageButton image = new ImageButton();
                         image.ID = "imgThumb" + i.ToString();
                         //image.ImageUrl = !_images[i].Contains("no-image.jpg") ? _images[i].Substring(0, _images[i].IndexOf(".jpg")) + "-thumb.jpg" : _images[i];
