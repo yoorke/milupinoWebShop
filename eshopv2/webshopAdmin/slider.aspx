@@ -14,7 +14,7 @@
                 <div class="btn-group">
                     <asp:Button ID="btnSave" runat="server" Text="Sačuvaj" OnClick="btnSave_Click" CssClass="btn btn-primary" />
                     <asp:Button ID="btnSaveClose" runat="server" Text="Sačuvaj i zatvori" OnClick="btnSaveClose_Click" CssClass="btn btn-default" />
-                    <asp:Button ID="btnClose" runat="server" Text="Zatvori" OnClick="btnClose_Click" CssClass="btn btn-default" />
+                    <asp:Button ID="btnClose" runat="server" Text="Zatvori" OnClick="btnClose_Click" CssClass="btn btn-default" CausesValidation="false" />
                 </div><!--btn-group-->
             </div><!--col-->
         </div><!--row-->
@@ -34,21 +34,24 @@
                     <div class="form-group">
                         <asp:CheckBox ID="chkActive" runat="server" Text="Aktivan" CssClass="checkbox" />
                     </div><!--form-group-->
-                    <div class="form-group">
-                        <label for="fluImage">Dodaj slide: </label>
-                        <asp:FileUpload ID="fluImage" runat="server" />
-                    </div><!--form-group-->
-                    <div class="form-group">
-                        <label for="txtUrl">Url: </label>
-                        <asp:TextBox ID="txtUrl" runat="server" CssClass="form-control"></asp:TextBox>
-                    </div><!--form-group-->
-                    <div class="form-group">
-                        <asp:Button ID="btnImageUpload" runat="server" OnClick="btnImageUpload_Click" Text="Dodaj" CssClass="btn btn-primary" />
-                    </div><!--form-group--> 
+                    <div class="background-gray padding-05">
+                        <div class="form-group">
+                            <label for="fluImage">Dodaj slide: </label>
+                            <asp:FileUpload ID="fluImage" runat="server" />
+                        </div><!--form-group-->
+                        <div class="form-group">
+                            <label for="txtUrl">Url: </label>
+                            <asp:TextBox ID="txtUrl" runat="server" CssClass="form-control"></asp:TextBox>
+                        </div><!--form-group-->
+                    
+                        <div class="form-group">
+                            <asp:Button ID="btnImageUpload" runat="server" OnClick="btnImageUpload_Click" Text="Dodaj" CssClass="btn btn-primary" />
+                        </div><!--form-group--> 
+                    </div>
                 </div><!--form-->
             </div><!--col-->
         </div><!--row-->
-        <div class="row">
+        <div class="row margin-top-2">
             <div class="col-lg-12">
                 <asp:GridView ID="dgvImages" runat="server" AutoGenerateColumns="false" CssClass="table table-condensed table-bordered table-hover table-striped"
                     OnRowDeleting="dgvImages_RowDeleting" DataKeyNames="sliderItemID" OnRowCommand="dgvImages_RowCommand">
@@ -68,7 +71,7 @@
                                 <asp:TextBox ID="txtUrl" runat="server" Text='<%#Eval("url") %>' CssClass="form-control"></asp:TextBox>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Sortiraj" ControlStyle-Width="50px" ItemStyle-Width="50px">
+                        <asp:TemplateField HeaderText="Sortiraj" ControlStyle-Width="20px" ItemStyle-Width="50px">
                             <ItemTemplate>
                                 <asp:ImageButton ID="btnSortUp" runat="server" ImageUrl="images/arrow_up.png" CommandName="sortUp" />
                                 <asp:ImageButton ID="btnSortDown" runat="server" ImageUrl="images/arrow_down.png" CommandName="sortDown" />

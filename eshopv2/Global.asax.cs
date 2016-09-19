@@ -18,7 +18,8 @@ namespace eshopv2
 
         protected void Application_Start(object sender, EventArgs e)
         {
-            RegisterRoutes(RouteTable.Routes);
+            //RegisterRoutes(RouteTable.Routes);
+            new RoutesBL().RegisterRoutes();
         }
 
         protected void Session_Start(object sender, EventArgs e)

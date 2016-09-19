@@ -34,6 +34,8 @@ namespace webshopAdmin
                         loadOrder(orderID);
                     }
                 }
+                else
+                    Page.Title = ViewState["title"] != null ? ViewState["title"].ToString() : "Narudžbenica | Admin panel";
             }
             else
                 Response.Redirect("~/" + ConfigurationManager.AppSettings["webshopAdminUrl"] + "/login.aspx?returnUrl=" + Page.Request.RawUrl);
@@ -63,6 +65,7 @@ namespace webshopAdmin
             lblCode.Text = order.Code;
             this.Title = "Narudžbenica - " + order.Firstname + " " + order.Lastname + " | Admin panel";
             lblOrderID.Value = order.OrderID.ToString();
+            ViewState.Add("title", Page.Title);
 
             dgvItems.DataSource = orderBL.GetOrderItemsFull(orderID);
             dgvItems.DataBind();
@@ -255,7 +258,7 @@ namespace webshopAdmin
             if (cmbStatus.SelectedIndex > -1)
             {
                 OrderBL orderBL = new OrderBL();
-                orderBL.UpdateOrderStatus(int.Parse(lblOrderID.Value), int.Parse(cmbStatus.SelectedValue));
+                orderBL.UpdateOrderStatus(int.Parse(lblOrderID.Value), int.Parse(cmbStatus.SelectedValue), lblEmail.Text, lblCode.Text, lblFirstname.Text + " " + lblLastname.Text, cmbStatus.SelectedItem.Text, lblDate.Text);
             }
         }
 

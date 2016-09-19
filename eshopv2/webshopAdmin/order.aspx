@@ -103,7 +103,7 @@
                     <div class="form-group">
                         <label for="lblComment" class="control-label col-sm-3">Napomena:</label>
                         <div class="col-sm-9">
-                            <asp:Label ID="lblComment" runat="server" CssClass="form-control"></asp:Label>        
+                            <asp:Label ID="lblComment" runat="server" CssClass="form-control height-auto"></asp:Label>
                         </div>
                     </div><!--form-group-->
                     <div class="form-group">

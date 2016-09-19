@@ -23,6 +23,18 @@
     font-size:0.8em;
 }
 
+.background-gray{
+    background-color:#e8e8e8;
+}
+
+.padding-05{
+    padding:0.5em;
+}
+
+.height-auto{
+    height:auto;
+}
+
 #divAlert
 {
 	

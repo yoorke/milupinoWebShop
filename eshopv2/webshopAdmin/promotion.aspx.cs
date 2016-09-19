@@ -30,6 +30,8 @@ namespace webshopAdmin
                         promotionID = int.Parse(Request.QueryString["promotionID"]);
                         loadPromotion(promotionID);
                     }
+                    else
+                        Title = "Unos nove promocije | Admin panel";
                 }
                 else
                     Page.Title = (ViewState["pageTitle"] != null) ? ViewState["pageTitle"].ToString() : "Unos promocije";

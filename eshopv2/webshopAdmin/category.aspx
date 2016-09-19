@@ -323,28 +323,6 @@
             })
         })
 
-        function createFriendlyUrl(name) {
-            name = name.toLowerCase().trim();
-            var notAllowed = ['š', 'ć', 'č', 'ž', ',', '"', ' ', '&'];
-            var replacement = ['s', 'c', 'c', 'z', '-', '-', '-', '-'];
-
-            for (var i = 0; i < notAllowed.length; i++) {
-                name = name.replace(new RegExp(notAllowed[i], 'g'), replacement[i]);
-            }
-
-            name = name.replace(new RegExp('\\.', 'g'), '-');
-            name = name.replace(new RegExp('\\+', 'g'), '-');
-            name = name.replace(new RegExp('\\(', 'g'), '-');
-            name = name.replace(new RegExp('\\)', 'g'), '-');
-            name = name.replace(new RegExp('\\*', 'g'), '-');
-            name = name.replace(new RegExp('\\%', 'g'), '-');
-            name = name.replace(new RegExp('\\$', 'g'), '-');
-            name = name.replace(new RegExp('đ', 'g'), 'dj');
-            name = name.replace(new RegExp('----', 'g'), '-');
-            name = name.replace(new RegExp('---', 'g'), '-');
-            name = name.replace(new RegExp('--', 'g'), '-');
-
-            return name;
-        }
+        
     </script>
 </asp:Content>

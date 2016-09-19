@@ -13,7 +13,7 @@
                 <div class="btn-group">
                     <asp:Button ID="btnSave" runat="server" OnClick="btnSave_Click" Text="Sačuvaj" CssClass="btn btn-primary" />
                     <asp:Button ID="btnSaveClose" runat="server" OnClick="btnSaveClose_Click" Text="Sačuvaj i zatvori" CssClass="btn btn-default" />
-                    <asp:Button ID="btnClose" runat="server" OnClick="btnClose_Click" Text="Zatvori" CssClass="btn btn-default" />
+                    <asp:Button ID="btnClose" runat="server" OnClick="btnClose_Click" Text="Zatvori" CssClass="btn btn-default" CausesValidation="false" />
                 </div><!--btn-group-->
             </div><!--col-->
         </div><!--row-->
@@ -24,21 +24,23 @@
                         <label for="cmbPosition">Pozicija: </label>
                         <asp:DropDownList ID="cmbPosition" runat="server" OnSelectedIndexChanged="cmbPosition_SelectedIndexChanged" AutoPostBack="true" CssClass="form-control"></asp:DropDownList>
                     </div><!--form-group-->
-                    <div class="form-group">
-                        <label for="fluBanner">Dodaj baner: </label>
-                        <asp:FileUpload ID="fluBanner" runat="server" />            
-                    </div><!--form-group-->
-                    <div class="form-group">
-                        <label for="txtUrl">Url:</label>
-                        <asp:TextBox ID="txtUrl" runat="server" CssClass="form-control"></asp:TextBox>
-                    </div><!--form-group-->
-                    <div class="form-group">
-                        <asp:Button ID="btnUpload" runat="server" OnClick="btnUpload_Click" Text="Dodaj" CssClass="btn btn-primary" />
-                    </div><!--form-group-->
+                    <div class="background-gray padding-05">
+                        <div class="form-group">
+                            <label for="fluBanner">Dodaj baner: </label>
+                            <asp:FileUpload ID="fluBanner" runat="server" />            
+                        </div><!--form-group-->
+                        <div class="form-group">
+                            <label for="txtUrl">Url:</label>
+                            <asp:TextBox ID="txtUrl" runat="server" CssClass="form-control"></asp:TextBox>
+                        </div><!--form-group-->
+                        <div class="form-group">
+                            <asp:Button ID="btnUpload" runat="server" OnClick="btnUpload_Click" Text="Dodaj" CssClass="btn btn-primary" />
+                        </div><!--form-group-->
+                    </div>
                 </div><!--form-->
             </div><!--col-->
         </div><!--row-->
-        <div class="row">
+        <div class="row margin-top-2">
             <div class="col-lg-12">
                 <asp:GridView ID="dgvBanners" runat="server" AutoGenerateColumns="false" CssClass="table table-condensed table-bordered table-hover table-striped"
                     OnRowDeleting="dgvBanners_RowDeleting"

@@ -126,7 +126,7 @@
                                         <asp:Image ID="imgProduct" runat="server" ToolTip="Main" Height="50px" />
                                         <asp:Image ID="imgLarge" runat="server" ToolTip="Large" Height="50px" />
                                         <asp:Image ID="imgHome" runat="server" ToolTip="Home" Height="50px" />
-                                        <asp:Image ID="imgThumb" runat="server" ToolTip="Thumb" Height="30px" />
+                                        <asp:Image ID="imgThumb" runat="server" ToolTip="Thumb" Height="50px" />
                                     </div>
                                 </div>
                                 <div role="form">

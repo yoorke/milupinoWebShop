@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/webshopAdmin/adminPanel.Master" AutoEventWireup="true" CodeBehind="categoryBanner.aspx.cs" Inherits="webshopAdmin.categoryBanner" %>
+﻿<%@ Page Title="Baner kategorije" Language="C#" MasterPageFile="~/webshopAdmin/adminPanel.Master" AutoEventWireup="true" CodeBehind="categoryBanner.aspx.cs" Inherits="webshopAdmin.categoryBanner" %>
 <%@ Register Src="customControls/CustomStatus.ascx" TagName="CustomStatus" TagPrefix="customStatus" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -32,16 +32,18 @@
                         <asp:TextBox ID="txtCategoryBannerName" runat="server" CssClass="form-control"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="requiredFieldValidator1" runat="server" ControlToValidate="txtCategoryBannerName" ErrorMessage="Unesite naziv"></asp:RequiredFieldValidator>
                     </div>
-                    <div class="form-group">
-                        <label>Baner:</label>
-                        <asp:Image ID="imgCategoryBanner" runat="server" />
-                        <asp:FileUpload ID="fluImage" runat="server" />
-                        <asp:Button ID="btnImageUpload" runat="server" Text="Dodaj baner" OnClick="btnImageUpload_Click" CssClass="btn btn-primary" />
-                    </div>
-                    <div class="form-group">
-                        <label for="txtUrl">Url:</label>
-                        <asp:TextBox ID="txtUrl" runat="server" CssClass="form-control"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="requiredFieldValidator2" runat="server" ControlToValidate="txtUrl" ErrorMessage="Unesite url"></asp:RequiredFieldValidator>
+                    <div class="background-gray padding-05">
+                        <div class="form-group">
+                            <label>Baner:</label>
+                            <asp:Image ID="imgCategoryBanner" runat="server" />
+                            <asp:FileUpload ID="fluImage" runat="server" />
+                            <asp:Button ID="btnImageUpload" runat="server" Text="Dodaj baner" OnClick="btnImageUpload_Click" CssClass="btn btn-primary" />
+                        </div>
+                        <div class="form-group">
+                            <label for="txtUrl">Url:</label>
+                            <asp:TextBox ID="txtUrl" runat="server" CssClass="form-control"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="requiredFieldValidator2" runat="server" ControlToValidate="txtUrl" ErrorMessage="Unesite url"></asp:RequiredFieldValidator>
+                        </div>
                     </div>
                 </div>
             </div>

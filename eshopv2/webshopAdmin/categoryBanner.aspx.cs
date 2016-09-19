@@ -64,6 +64,7 @@ namespace webshopAdmin
             imgCategoryBanner.ImageUrl = "/images/" + categoryBanner.ImageUrl;
             lblCategoryBannerName.Text = categoryBanner.Name;
             lblCategoryBannerID.Value = categoryBanner.CategoryBannerID.ToString();
+            Page.Title = categoryBanner.Name + " | Admin panel";
         }
 
         private void saveCategoryBanner()

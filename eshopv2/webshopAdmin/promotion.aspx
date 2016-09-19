@@ -15,7 +15,7 @@
                 <div class="btn-group">
                     <asp:Button ID="btnSave" runat="server" Text="Sačuvaj" OnClick="btnSave_Click" CssClass="btn btn-primary" />
                     <asp:Button ID="btnSaveClose" runat="server" Text="Sačuvaj i zatvori" OnClick="btnSaveClose_Click" CssClass="btn btn-default" />
-                    <asp:Button ID="btnClose" runat="server" Text="Zatvori" OnClick="btnClose_Click" CssClass="btn btn-default" />
+                    <asp:Button ID="btnClose" runat="server" Text="Zatvori" OnClick="btnClose_Click" CssClass="btn btn-default" CausesValidation="false" />
                 </div><!--brn-group-->
             </div><!--col-->
         </div><!--row-->
@@ -123,4 +123,13 @@
         </p>
     </div>--%>
     
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolderFooter" runat="server">
+    <script>
+        $(document).ready(function () {
+            $('[id*=txtName]').change(function () {
+                $('[id*=txtUrl]').val(createFriendlyUrl($('[id*=txtName]').val()));
+            })
+        })
+    </script>
 </asp:Content>
