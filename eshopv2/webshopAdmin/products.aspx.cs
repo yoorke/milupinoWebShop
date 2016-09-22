@@ -35,7 +35,7 @@ namespace webshopAdmin
         private void loadProducts()
         {
             int categoryID = -1;
-            if (cmbCategory.SelectedIndex > 0)
+            if (cmbCategory.SelectedIndex > -1)
                 categoryID = int.Parse(cmbCategory.SelectedValue);
 
             int supplierID = -1;
@@ -77,7 +77,7 @@ namespace webshopAdmin
         {
             CategoryBL categoryBL = new CategoryBL();
             //cmbCategory.DataSource = categoryBL.GetCategories();
-            cmbCategory.DataSource = categoryBL.GetNestedCategoriesDataTable();
+            cmbCategory.DataSource = categoryBL.GetNestedCategoriesDataTable(true);
             cmbCategory.DataTextField = "name";
             cmbCategory.DataValueField = "categoryID";
             cmbCategory.DataBind();

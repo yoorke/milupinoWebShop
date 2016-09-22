@@ -99,6 +99,8 @@ namespace webshopAdmin
                 ViewState["images"] = images;
 
                 loadImages();
+
+                txtUrl.Text = string.Empty;
             }
         }
 

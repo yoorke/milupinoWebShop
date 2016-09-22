@@ -7,7 +7,7 @@
     <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Kategorija: <asp:Literal ID="lblCategoryName" runat="server"></asp:Literal></h1>
+                <h1 class="page-header">Kategorija <asp:Literal ID="lblCategoryName" runat="server"></asp:Literal></h1>
             </div>
         </div>
         <div class="row margin-top-2">
@@ -77,9 +77,20 @@
                                         <label for="cmbCategoryBanner">Baner:</label>
                                         <asp:DropDownList ID="cmbCategoryBanner" runat="server" CssClass="form-control"></asp:DropDownList>
                                     </div> 
-                                    <div class="form-group">
-                                        <label>&nbsp;</label>
+                                    
+                                </div>
+                            </div>
+                            <div class="col-md-4 background-gray margin-top-1-5">
+                                <div role="form">
+                                    <div class="form-group">                                        
                                         <asp:CheckBox ID="chkActive" runat="server" CssClass="checkbox" Text="Aktivan" Checked="true" />
+                                    </div>
+                                    <div class="form-group">                                        
+                                        <asp:CheckBox ID="chkUpdateProductsFromExternalApplication" runat="server" CssClass="checkbox" Text="Omogući automatsko osvežavanje proizvoda" Visible = "false" />
+                                    </div>
+                                    <div class="form-group">
+                                        
+                                        <asp:CheckBox ID="chkExportProducts" runat="server" CssClass="checkbox" Text="Dozvoli izvoz proizvoda" />
                                     </div>
                                 </div>
                             </div>

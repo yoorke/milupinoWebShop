@@ -145,6 +145,11 @@
                                         <asp:RequiredFieldValidator ID="reqiredFieldValidator4" runat="server" ControlToValidate="txtWebPrice" ErrorMessage="Web cena je obavezan podatak" Display="Dynamic"></asp:RequiredFieldValidator>
                                     </div><!--form-group-->
                                     <div class="form-group">
+                                        <label for="cmbUnitOfMeasure">Jedinica mere:</label>
+                                        <asp:DropDownList ID="cmbUnitOfMeasure" runat="server" CssClass="form-control"></asp:DropDownList>
+                                        <asp:RangeValidator ID="rangeValidator2" runat="server" ControlToValidate="cmbUnitOfMeasure" MinimumValue="1" MaximumValue="999" ErrorMessage="Odaberite jedinicu mere" Display="Dynamic"></asp:RangeValidator>
+                                    </div>
+                                    <div class="form-group">
                                         <label for="cmbVat">PDV:</label>
                                         <div class="input-group">
                                             <asp:DropDownList ID="cmbVat" runat="server" CssClass="form-control text-right"></asp:DropDownList>

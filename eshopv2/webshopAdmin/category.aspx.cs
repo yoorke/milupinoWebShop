@@ -75,6 +75,8 @@ namespace webshopAdmin
                 category.Active = chkActive.Checked;
                 category.Slider = new Slider(int.Parse(cmbSlider.SelectedValue), cmbSlider.SelectedItem.Text, DateTime.Now, DateTime.Now, true);
                 category.CategoryBannerID = cmbCategoryBanner.SelectedIndex > -1 ? int.Parse(cmbCategoryBanner.SelectedValue) : -1;
+                category.UpdateProductsFromExternalApplication = chkUpdateProductsFromExternalApplication.Checked;
+                category.ExportProducts = chkExportProducts.Checked;
 
                 CategoryBL categoryBl = new CategoryBL();
                 categoryBl.SaveCategory(category);
@@ -128,6 +130,9 @@ namespace webshopAdmin
             cmbBrand.DataTextField = "name";
             cmbBrand.DataValueField = "brandID";
             cmbBrand.DataBind();
+
+            chkUpdateProductsFromExternalApplication.Visible = bool.Parse(ConfigurationManager.AppSettings["updateProductsFromExternalApplication"]);
+            chkExportProducts.Visible = bool.Parse(ConfigurationManager.AppSettings["exportProducts"]);
         }
 
         private void loadCategory(int categoryID)
@@ -157,7 +162,9 @@ namespace webshopAdmin
             {
                 cmbSlider.SelectedValue = category.Slider.SliderID.ToString();
             }
-            cmbCategoryBanner.SelectedValue = category.CategoryBannerID != null ? category.CategoryBannerID.ToString() : "-1";
+            cmbCategoryBanner.SelectedValue = category.CategoryBannerID != 0 ? category.CategoryBannerID.ToString() : "-1";
+            chkUpdateProductsFromExternalApplication.Checked = category.UpdateProductsFromExternalApplication;
+            chkExportProducts.Checked = category.ExportProducts;
 
 
             if (lblCategoryID.Value != string.Empty)

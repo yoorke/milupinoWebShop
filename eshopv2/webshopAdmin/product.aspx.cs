@@ -131,7 +131,8 @@ namespace webshopAdmin
             loadBrands();
 
             CategoryBL categoryBL = new CategoryBL();
-            cmbCategory.DataSource = categoryBL.GetCategories();
+            //cmbCategory.DataSource = categoryBL.GetCategories();
+            cmbCategory.DataSource = categoryBL.GetNestedCategoriesDataTable();
             cmbCategory.DataTextField = "name";
             cmbCategory.DataValueField = "categoryID";
             cmbCategory.DataBind();
@@ -150,6 +151,11 @@ namespace webshopAdmin
             cmbPromotions.DataTextField = "name";
             cmbPromotions.DataValueField = "promotionID";
             cmbPromotions.DataBind();
+
+            cmbUnitOfMeasure.DataSource = new UnitOfMeasureBL().GetUnitsOfMeasure(true);
+            cmbUnitOfMeasure.DataTextField = "FullName";
+            cmbUnitOfMeasure.DataValueField = "unitOfMeasureID";
+            cmbUnitOfMeasure.DataBind();
         }
 
         private void loadSupplier()
@@ -202,6 +208,7 @@ namespace webshopAdmin
             Page.Title = product.Name + " | Admin panel";
             ViewState.Add("pageTitle", Page.Title);
             txtSupplierPrice.Text = string.Format("{0:N2}", product.SupplierPrice);
+            cmbUnitOfMeasure.SelectedValue = product.UnitOfMeasure.UnitOfMeasureID.ToString();
 
             if (product.Promotion != null)
             {
@@ -345,6 +352,7 @@ namespace webshopAdmin
             product.Ean = txtEan.Text;
             product.Specification = txtSpecification.Text;
             product.ProductID = (lblProductID.Value != string.Empty) ? int.Parse(lblProductID.Value) : 0;
+            product.UnitOfMeasure = new UnitOfMeasure(int.Parse(cmbUnitOfMeasure.SelectedValue), cmbUnitOfMeasure.SelectedItem.Text, string.Empty);
 
             if (cmbPromotions.SelectedIndex > 0)
             {
@@ -357,7 +365,7 @@ namespace webshopAdmin
             if (cmbCategory.SelectedIndex > -1)
             {
                 product.Categories = new List<Category>();
-                product.Categories.Add(new Category(int.Parse(cmbCategory.SelectedValue), cmbCategory.SelectedItem.Text, 0, string.Empty, string.Empty, 0, 0, 0, string.Empty, true, 0));
+                product.Categories.Add(new Category(int.Parse(cmbCategory.SelectedValue), cmbCategory.SelectedItem.Text, 0, string.Empty, string.Empty, 0, 0, 0, string.Empty, true, 0, false, false));
                 product.Attributes = new List<AttributeValue>();
 
                 //foreach (object obj in TabContainer1.Controls)

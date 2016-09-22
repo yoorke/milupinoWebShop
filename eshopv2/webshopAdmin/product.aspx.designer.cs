@@ -346,6 +346,24 @@ namespace webshopAdmin {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator reqiredFieldValidator4;
         
         /// <summary>
+        /// cmbUnitOfMeasure control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList cmbUnitOfMeasure;
+        
+        /// <summary>
+        /// rangeValidator2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator rangeValidator2;
+        
+        /// <summary>
         /// cmbVat control.
         /// </summary>
         /// <remarks>

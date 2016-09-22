@@ -51,9 +51,9 @@
                                 <asp:Label ID="lblBannerID" runat="server" Text='<%#Eval("bannerID") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField ItemStyle-Width="200px">
+                        <asp:TemplateField ItemStyle-Width="300px" ControlStyle-Width="300px">
                             <ItemTemplate>
-                                <asp:Image ID="imgBanner" runat="server" ImageUrl='<%#Eval("imageUrl") %>' />
+                                <asp:Image ID="imgBanner" runat="server" ImageUrl='<%#Eval("imageUrl") %>' CssClass="img-responsive" />
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Link">
