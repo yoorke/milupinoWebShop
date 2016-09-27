@@ -22,7 +22,7 @@
                 <uc1:CustomStatus ID="csStatus" runat="server" />
     <asp:GridView ID="dgvCategory" runat="server" AutoGenerateColumns="false" OnRowDataBound="dgvCategory_RowDataBound"
         OnRowDeleting="dgvCategory_RowDeleting" DataKeyNames="categoryID"
-        CssClass="table table-hover table-bordered table-condensed table-striped">
+        CssClass="table table-hover table-bordered table-condensed table-striped" OnRowCommand="dgvCategory_RowCommand">
         <Columns>
             
             <asp:TemplateField HeaderText="Id" ControlStyle-Width="50px">
@@ -36,6 +36,30 @@
                     <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%#"/" + ConfigurationManager.AppSettings["webshopAdminUrl"] + "/category.aspx?id=" + Eval("categoryID") %>'>
                         <asp:Label ID="lblName" runat="server" Text='<%#Eval("name") %>'></asp:Label>
                     </asp:HyperLink>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField Visible="false">
+                <ItemTemplate>
+                    <asp:Label ID="lblSortOrder" runat="server" Text='<%#Eval("sortOrder") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField Visible="false">
+                <ItemTemplate>
+                    <asp:Label ID="lblParentCategoryID" runat="server" Text='<%#Eval("parentID") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField ControlStyle-Width="20px" ItemStyle-Width="20px">
+                <ItemTemplate>
+                    <asp:LinkButton ID="btnSortUp" runat="server" OnClick="btnSortUp_Click" CommandName="sortUp">
+                        <span class="glyphicon glyphicon-arrow-up"></span>
+                    </asp:LinkButton>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField ControlStyle-Width="20px" ItemStyle-Width="20px">
+                <ItemTemplate>
+                    <asp:LinkButton ID="btnSortDown" runat="server" OnClick="btnSortDown_Click" CommandName="sortDown">
+                        <span class="glyphicon glyphicon-arrow-down"></span>
+                    </asp:LinkButton>
                 </ItemTemplate>
             </asp:TemplateField>
             

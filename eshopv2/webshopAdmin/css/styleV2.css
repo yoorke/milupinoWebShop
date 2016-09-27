@@ -196,10 +196,17 @@
 }
 
 .status{
-    margin:0.5em;
+    /*margin:0.5em;
     display:block;
     padding:0.5em;
+    text-align:center;*/
+    width:100%;
+    display:block;
     text-align:center;
+    /*position:fixed;
+    top:50px;
+    right:10px;
+    z-index:999;*/
 }
 
 .status.success{
@@ -239,4 +246,8 @@
     width:50px;
     text-align:center;
     border:1px solid #e8e8e8;
+}
+
+.category-icon{
+    width:50px;
 }

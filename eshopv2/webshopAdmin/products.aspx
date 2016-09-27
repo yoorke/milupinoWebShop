@@ -59,7 +59,7 @@
                     </div>
                 </div><!--form-->
             </div><!--col-->
-            <div class="col-lg-4">
+            <div class="col-lg-4 background-gray padding-05">
                 <label for="cmbPromotions">Promocija:</label>
                 <asp:DropDownList ID="cmbPromotions" runat="server" CssClass="form-control"></asp:DropDownList>
                 <asp:Button ID="btnAddToPromotion" runat="server" OnClick="btnAddToPromotion_Click" Text="Dodaj na promociju" CssClass="btn btn-primary margin-top-05" />

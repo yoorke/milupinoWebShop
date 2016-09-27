@@ -49,7 +49,7 @@ namespace webshopAdmin
         {
             lblStatusText.ForeColor = _foreColor;
             lblStatusText.Text = _text;
-            this.Visible = _visible;
+            this.Visible = false;
             lblStatusText.Visible = false;
         }
 
@@ -57,8 +57,9 @@ namespace webshopAdmin
         {
             lblStatusText.Text = _text;
             //lblStatusText.ForeColor = _foreColor;
-            lblStatusText.Visible = _visible;
+            lblStatusText.Visible = true;
             lblStatusText.Attributes["class"] = _class;
+            this.Visible = true;
         }
     }
 }

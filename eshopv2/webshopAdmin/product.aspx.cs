@@ -156,6 +156,11 @@ namespace webshopAdmin
             cmbUnitOfMeasure.DataTextField = "FullName";
             cmbUnitOfMeasure.DataValueField = "unitOfMeasureID";
             cmbUnitOfMeasure.DataBind();
+
+            cmbCategories.DataSource = categoryBL.GetNestedCategoriesDataTable();
+            cmbCategories.DataTextField = "name";
+            cmbCategories.DataValueField = "categoryID";
+            cmbCategories.DataBind();
         }
 
         private void loadSupplier()
@@ -335,7 +340,7 @@ namespace webshopAdmin
             //main data
             Product product = new Product();
             product.Name = txtName.Text;
-            product.Code = txtCode.Text;
+            product.Code = bool.Parse(ConfigurationManager.AppSettings["fillZeroCode"]) ? txtCode.Text.PadLeft(13, '0') : txtCode.Text;
             product.SupplierCode = txtSupplierCode.Text;
             product.Brand = new Brand();
             product.Brand.BrandID = int.Parse(cmbBrand.SelectedValue);
@@ -349,7 +354,7 @@ namespace webshopAdmin
             product.IsActive = chkActive.Checked;
             product.IsLocked = chkLocked.Checked;
             product.IsInStock = chkInStock.Checked;
-            product.Ean = txtEan.Text;
+            product.Ean = bool.Parse(ConfigurationManager.AppSettings["fillZeroBarcode"]) ? txtEan.Text.PadLeft(13, '0') : txtEan.Text;
             product.Specification = txtSpecification.Text;
             product.ProductID = (lblProductID.Value != string.Empty) ? int.Parse(lblProductID.Value) : 0;
             product.UnitOfMeasure = new UnitOfMeasure(int.Parse(cmbUnitOfMeasure.SelectedValue), cmbUnitOfMeasure.SelectedItem.Text, string.Empty);
@@ -660,6 +665,11 @@ namespace webshopAdmin
                     //image.ImageUrl = "/images/" + image.ImageUrl;
                 //}
             }
+        }
+
+        protected void btnAddProductToCategory_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

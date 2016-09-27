@@ -10,7 +10,7 @@
         <!--PANEL POPUP-->
         <ajaxtoolkit:ToolkitScriptManager ID="ToolKitScriptManager1" runat="server" EnablePartialRendering="true"></ajaxtoolkit:ToolkitScriptManager>
         <div>
-            <asp:Panel ID="pnlAddAttributeValue" runat="server" CssClass="popup">
+            <asp:Panel ID="pnlAddAttributeValue" runat="server" CssClass="popup" DefaultButton="btnAddAttributeValue">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="form-group">
@@ -21,8 +21,8 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-12 text-center">
-                        <asp:Button ID="btnAddAttributeValue" runat="server" Text="Sačuvaj" OnClick="btnAddAttributeValue_Click" CssClass="btn btn-primary" />
-                        <asp:Button ID="btnCancelPopup" runat="server" Text="Odustani" CssClass="btn btn-primary"  />
+                        <asp:Button ID="btnAddAttributeValue" runat="server" Text="Sačuvaj" OnClick="btnAddAttributeValue_Click" CssClass="btn btn-primary" CausesValidation="false" />
+                        <asp:Button ID="btnCancelPopup" runat="server" Text="Odustani" CssClass="btn btn-primary" CausesValidation="false"  />
                     </div><!--col-->
                 </div><!--row-->
             </asp:Panel>
@@ -219,6 +219,31 @@
                                     </div><!--form-group-->
                                 </div><!--form-->
                             </div><!--col-->
+                            <div class="col-lg-5">
+                                <div role="form">
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <label for="cmbCategories">Kategorije:</label>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-10">
+                                                <asp:DropDownList ID="cmbCategories" runat="server" CssClass="form-control"></asp:DropDownList>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <asp:Button ID="btnAddProductToCategory" runat="server" CssClass="btn btn-primary" OnClick="btnAddProductToCategory_Click" Text="Dodaj" />
+                                            </div>
+                                        </div>
+                                        <div class="row margin-top-05">
+                                            <div class="col-lg-12">
+                                                <label for="lstCategories">Proizvod će se prikazivati u sledećim kategorijama:</label>
+                                                <asp:ListBox ID="lstCategories" runat="server" CssClass="form-control"></asp:ListBox>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div><!--row-->
                         <div class="row">
                             <div class="col-lg-12">

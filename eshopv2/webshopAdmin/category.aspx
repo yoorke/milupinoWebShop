@@ -1,10 +1,11 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/webshopAdmin/adminPanel.Master" AutoEventWireup="True" CodeBehind="category.aspx.cs" Inherits="webshopAdmin.category" Title="Nova kategorija" %>
-<%--@ Register src="../user_controls/CustomStatus.ascx" tagname="CustomStatus" tagprefix="uc1"--%>
+<%@ Register Src="customControls/CustomStatus.ascx" TagName="CustomStatus" TagPrefix="YT" %>
 <%@ Register Assembly="CKEditor.NET" Namespace="CKEditor.NET" TagPrefix="CKEditor"%>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div id="page-wrapper">
+        
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">Kategorija <asp:Literal ID="lblCategoryName" runat="server"></asp:Literal></h1>
@@ -19,9 +20,9 @@
                 </div>
             </div>
         </div><!--row-->
-        <div class="row">
+        <div class="row margin-top-2">
             <div class="col-lg-12">
-                <%--<uc1:CustomStatus ID="csStatus" runat="server" />--%>
+                <YT:CustomStatus ID="csStatus" runat="server" Visible="false" />
             </div>
         </div><!--row-->
         <asp:HiddenField ID="lblTabName" runat="server" />
@@ -47,16 +48,35 @@
                                     </div><!--form-group-->
                                     <div class="form-group">
                                         <label for="cmbParent">Nadkategorija:</label>
-                                        <asp:DropDownList ID="cmbParent" runat="server" CssClass="form-control"></asp:DropDownList>    
+                                        <asp:DropDownList ID="cmbParent" runat="server" CssClass="form-control" OnSelectedIndexChanged="cmbParent_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>    
                                     </div><!--form-group-->
                                     <div class="form-group">
                                         <label for="txtUrl">Url:</label>
                                         <asp:TextBox ID="txtUrl" runat="server" CssClass="form-control" placeholder="Url"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ControlToValidate="txtUrl" ErrorMessage="Unesite url kategorije" runat="server" Display="Dynamic"></asp:RequiredFieldValidator>
                                     </div><!--form-group-->
-                                    <div class="form-group">
-                                        <label for="txtImageUrl">Image url:</label>
-                                        <asp:TextBox ID="txtImageUrl" runat="server" CssClass="form-control" placeholder="ImageUrl"></asp:TextBox>
+                                    <div class="form-group background-gray padding-05">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <label for="txtImageUrl">Image url:</label>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <asp:FileUpload ID="fluUpload" runat="server" />
+                                            </div>
+                                            <div class="col-md-6">
+                                                <asp:Button ID="btnImageUpload" runat="server" OnClick="btnImageUpload_Click" Text="Sačuvaj sliku" CssClass="btn btn-primary pull-right" CausesValidation="false" />
+                                            </div>
+                                        </div>
+                                        <div class="row margin-top-05">
+                                            <div class="col-lg-6">
+                                                <asp:Image ID="imgIcon" runat="server" CssClass="category-icon img-responsive" />
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <asp:TextBox ID="txtImageUrl" runat="server" CssClass="form-control" placeholder="ImageUrl"></asp:TextBox>
+                                            </div>
+                                        </div>
                                     </div><!--form-group-->
                                     
                                 </div><!--form-->

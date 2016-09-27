@@ -22,9 +22,8 @@ namespace webshopAdmin
         {
             if (User.Identity.IsAuthenticated && User.IsInRole("administrator"))
             {
-                CategoryBL categoryBL = new CategoryBL();
-                dgvCategory.DataSource = categoryBL.GetNestedCategoriesDataTable(true);
-                dgvCategory.DataBind();
+                if(!Page.IsPostBack)
+                    loadCategories();
             }
             else
                 Page.Response.Redirect("/" + ConfigurationManager.AppSettings["webshopAdminUrl"] + "/login.aspx?returnUrl=" + Page.Request.RawUrl);
@@ -32,11 +31,16 @@ namespace webshopAdmin
 
         protected void dgvCategory_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-            /*if (e.Row.RowType == DataControlRowType.DataRow)
+            if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                if (int.Parse(((Label)e.Row.FindControl("lblParentID")).Text) > int.Parse(((Label)e.Row.FindControl("lblId")).Text))
-                    ((Label)e.Row.FindControl("lblName")).Text = " -" + ((Label)e.Row.FindControl("lblName")).Text;
-            }*/
+                //if (int.Parse(((Label)e.Row.FindControl("lblParentID")).Text) > int.Parse(((Label)e.Row.FindControl("lblId")).Text))
+                //((Label)e.Row.FindControl("lblName")).Text = " -" + ((Label)e.Row.FindControl("lblName")).Text;
+
+                if (int.Parse(((Label)e.Row.FindControl("lblSortOrder")).Text) <= 1)
+                    ((LinkButton)e.Row.FindControl("btnSortUp")).Enabled = false;
+                else if (int.Parse(((Label)e.Row.FindControl("lblSortOrder")).Text) >= new CategoryBL().GetMaxSortOrder(int.Parse(((Label)e.Row.FindControl("lblParentCategoryID")).Text)))
+                    ((LinkButton)e.Row.FindControl("btnSortDown")).Enabled = false;
+            }
         }
 
         protected void dgvCategory_RowDeleting(object sender, GridViewDeleteEventArgs e)
@@ -84,6 +88,48 @@ namespace webshopAdmin
             csStatus.Visible = visible;
             csStatus.ForeColor = foreColor;
             csStatus.Show();
+        }
+
+        protected void btnSortUp_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        protected void btnSortDown_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void sort(int categoryID, int direction)
+        {
+            new CategoryBL().ReorderCategory(categoryID, direction);
+            loadCategories();
+        }
+
+        protected void dgvCategory_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            GridViewRow row = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);
+            int categoryID = int.Parse(((Label)row.Cells[0].FindControl("lblId")).Text);
+            switch (e.CommandName)
+            {
+                case "sortUp":
+                    {
+                        sort(categoryID, -1);
+                        break;
+                    }
+                case "sortDown":
+                    {
+                        sort(categoryID, 1);
+                        break;
+                    }
+            }
+        }
+
+        private void loadCategories()
+        {
+            CategoryBL categoryBL = new CategoryBL();
+            dgvCategory.DataSource = categoryBL.GetNestedCategoriesDataTable(true);
+            dgvCategory.DataBind();
         }
     }
 }

@@ -30,6 +30,11 @@ namespace webshopAdmin
                     int categoryID = (Request.QueryString.ToString().Contains("id")) ? int.Parse(Request.QueryString["id"]) : 0;
                     if (categoryID > 0)
                         loadCategory(categoryID);
+                    else
+                    { 
+                        txtSortOrder.Text = (new CategoryBL().GetMaxSortOrder(int.Parse(cmbParent.SelectedValue)) + 1).ToString();
+                        imgIcon.ImageUrl = "~/images/no-image.jpg";
+                    }
                 }
                 else
                 {
@@ -85,7 +90,7 @@ namespace webshopAdmin
             }
             catch (BLException ex)
             {
-                setStatus(ex.Message, System.Drawing.Color.Red, true);
+                setStatus(ex.Message, System.Drawing.Color.Red, "danger");
             }
 
         }
@@ -93,7 +98,7 @@ namespace webshopAdmin
         private void loadIntoForm()
         {
             CategoryBL categoryBl = new CategoryBL();
-            cmbParent.DataSource = categoryBl.GetCategories();
+            cmbParent.DataSource = categoryBl.GetNestedCategoriesDataTable(true, true);
             cmbParent.DataTextField = "name";
             cmbParent.DataValueField = "categoryID";
             cmbParent.DataBind();
@@ -133,6 +138,8 @@ namespace webshopAdmin
 
             chkUpdateProductsFromExternalApplication.Visible = bool.Parse(ConfigurationManager.AppSettings["updateProductsFromExternalApplication"]);
             chkExportProducts.Visible = bool.Parse(ConfigurationManager.AppSettings["exportProducts"]);
+
+            
         }
 
         private void loadCategory(int categoryID)
@@ -143,7 +150,8 @@ namespace webshopAdmin
             txtName.Text = category.Name;
             txtUrl.Text = category.Url;
             txtImageUrl.Text = category.ImageUrl;
-            cmbParent.SelectedValue = cmbParent.Items.FindByValue(category.ParentCategoryID.ToString()).Value;
+            //cmbParent.SelectedValue = cmbParent.Items.FindByValue(category.ParentCategoryID.ToString()).Value;
+            cmbParent.SelectedValue = category.ParentCategoryID.ToString();
             txtSortOrder.Text = category.SortOrder.ToString();
             lblCategoryID.Value = category.CategoryID.ToString();
             txtPricePercent.Text = category.PricePercent.ToString();
@@ -166,6 +174,8 @@ namespace webshopAdmin
             chkUpdateProductsFromExternalApplication.Checked = category.UpdateProductsFromExternalApplication;
             chkExportProducts.Checked = category.ExportProducts;
 
+            imgIcon.ImageUrl = category.ImageUrl != string.Empty ? Server.MapPath("~/images/" + category.ImageUrl) : "~/images/no-image.jpg";
+
 
             if (lblCategoryID.Value != string.Empty)
             {
@@ -186,7 +196,7 @@ namespace webshopAdmin
             }
             catch (BLException blException)
             {
-                setStatus(blException.Message, System.Drawing.Color.Red, true);
+                setStatus(blException.Message, System.Drawing.Color.Red, "danger");
             }
         }
 
@@ -201,7 +211,7 @@ namespace webshopAdmin
             }
             catch (BLException ex)
             {
-                setStatus(ex.Message, System.Drawing.Color.Red, true);
+                setStatus(ex.Message, System.Drawing.Color.Red, "danger");
             }
         }
 
@@ -212,12 +222,12 @@ namespace webshopAdmin
             dgvAttributes.DataBind();
         }
 
-        private void setStatus(string text, System.Drawing.Color foreColor, bool visible)
+        private void setStatus(string text, System.Drawing.Color foreColor, string classes)
         {
-            //csStatus.Text = text;
-            //csStatus.Visible = visible;
+            csStatus.Text = text;
             //csStatus.ForeColor = foreColor;
-            //csStatus.Show();
+            csStatus.Class = "alert alert-" + classes + " status";
+            csStatus.Show();
         }
 
         protected void btnSaveClose_Click(object sender, EventArgs e)
@@ -306,6 +316,24 @@ namespace webshopAdmin
                 for (int i = 0; i < brands.Count; i++)
                     lstBrands.Items.Add(new ListItem(brands[i].Name.ToString(), brands[i].BrandID.ToString()));
             }
+        }
+
+        protected void cmbParent_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtSortOrder.Text = (new CategoryBL().GetMaxSortOrder(int.Parse(cmbParent.SelectedValue)) + 1).ToString();
+        }
+
+        protected void btnImageUpload_Click(object sender, EventArgs e)
+        {
+            if (fluUpload.HasFile && txtName.Text != string.Empty)
+            {
+                string extension = fluUpload.FileName.Substring(fluUpload.FileName.LastIndexOf('.'));
+                fluUpload.SaveAs(Server.MapPath("~/images/" + txtUrl.Text + extension));
+                txtImageUrl.Text = txtUrl.Text + extension;
+                imgIcon.ImageUrl = "~/images/" + txtUrl.Text + extension;
+            }
+            else
+                setStatus("Unesite naziv kategorije", System.Drawing.Color.Red, "warning");
         }
     }
 }

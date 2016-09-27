@@ -49,6 +49,15 @@ namespace webshopAdmin {
         protected global::System.Web.UI.WebControls.Button btnClose;
         
         /// <summary>
+        /// csStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::webshopAdmin.CustomStatus csStatus;
+        
+        /// <summary>
         /// lblTabName control.
         /// </summary>
         /// <remarks>
@@ -110,6 +119,33 @@ namespace webshopAdmin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
+        
+        /// <summary>
+        /// fluUpload control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload fluUpload;
+        
+        /// <summary>
+        /// btnImageUpload control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnImageUpload;
+        
+        /// <summary>
+        /// imgIcon control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image imgIcon;
         
         /// <summary>
         /// txtImageUrl control.

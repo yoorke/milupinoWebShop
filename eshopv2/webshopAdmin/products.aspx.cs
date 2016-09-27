@@ -77,7 +77,7 @@ namespace webshopAdmin
         {
             CategoryBL categoryBL = new CategoryBL();
             //cmbCategory.DataSource = categoryBL.GetCategories();
-            cmbCategory.DataSource = categoryBL.GetNestedCategoriesDataTable(true);
+            cmbCategory.DataSource = categoryBL.GetNestedCategoriesDataTable(true, true);
             cmbCategory.DataTextField = "name";
             cmbCategory.DataValueField = "categoryID";
             cmbCategory.DataBind();
