@@ -22,7 +22,7 @@
     </div><!--col-->--%>
     
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center margin-top-2">
-        <span>Vaša narudžbina je uspešno prosleđena. Uskoro ćete primiti potvrdu na Vašu email adresu sa detaljnim informacijama.</span>
+        <p class="alert alert-success">Vaša narudžbina je uspešno prosleđena. Uskoro ćete primiti potvrdu na Vašu email adresu sa detaljnim informacijama.</p>
     </div>
 
 </asp:Content>

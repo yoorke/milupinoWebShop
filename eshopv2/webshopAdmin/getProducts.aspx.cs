@@ -29,6 +29,8 @@ namespace webshopAdmin
                 if (!Page.IsPostBack)
                 {
                     loadIntoForm();
+                    if (Page.Request.QueryString.ToString().Contains("categoryID"))
+                        loadCategory(int.Parse(Page.Request.QueryString["categoryID"]));
                 }
             }
             else
@@ -365,6 +367,13 @@ namespace webshopAdmin
                     eweBL.SaveEweCategoryForCategory(int.Parse(cmbCategory.SelectedValue), int.Parse(lstSubCategory.Items[i].Value), false);
             }
             eweBL.SaveSelected(categoryIDs.Substring(0, categoryIDs.Length - 1), selected.Substring(0, selected.Length - 1));
+        }
+
+        private void loadCategory(int categoryID)
+        {
+            cmbCategory.SelectedValue = categoryID.ToString();
+            cmbCategory_SelectedIndexChanged(this, null);
+            btnGetProducts_Click(this, null);
         }
     }
 }

@@ -28,9 +28,9 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Username" ControlStyle-Width="100px">
                             <ItemTemplate>
-                                <%--<asp:HyperLink ID="lnkUsername" runat="server" NavigateUrl='<%#"/administrator/user.aspx?userID=" + Eval("userID") %>'>--%>
+                                <asp:HyperLink ID="lnkUsername" runat="server" NavigateUrl='<%#"/" + ConfigurationManager.AppSettings["webshopAdminUrl"] + "/user.aspx?userID=" + Eval("userID") %>'>
                                     <asp:Label ID="lblUsername" runat="server" Text='<%#Eval("username") %>'></asp:Label>
-                                <%--</asp:HyperLink>--%>
+                                </asp:HyperLink>
                             </ItemTemplate>
                         </asp:TemplateField>
                 

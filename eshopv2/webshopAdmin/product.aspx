@@ -222,23 +222,30 @@
                             <div class="col-lg-5">
                                 <div role="form">
                                     <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-lg-12">
-                                                <label for="cmbCategories">Kategorije:</label>
+                                        <div id="divProductInMultipleCategories" runat="server">
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <label for="cmbCategories">Kategorije:</label>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-10">
-                                                <asp:DropDownList ID="cmbCategories" runat="server" CssClass="form-control"></asp:DropDownList>
+                                        
+                                            <div class="row">
+                                                <div class="col-md-10">
+                                                    <asp:DropDownList ID="cmbCategories" runat="server" CssClass="form-control"></asp:DropDownList>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <asp:Button ID="btnAddProductToCategory" runat="server" CssClass="btn btn-primary" OnClick="btnAddProductToCategory_Click" Text="Dodaj" CausesValidation="false" />
+                                                </div>
+                                            
                                             </div>
-                                            <div class="col-md-2">
-                                                <asp:Button ID="btnAddProductToCategory" runat="server" CssClass="btn btn-primary" OnClick="btnAddProductToCategory_Click" Text="Dodaj" />
-                                            </div>
-                                        </div>
-                                        <div class="row margin-top-05">
-                                            <div class="col-lg-12">
-                                                <label for="lstCategories">Proizvod će se prikazivati u sledećim kategorijama:</label>
-                                                <asp:ListBox ID="lstCategories" runat="server" CssClass="form-control"></asp:ListBox>
+                                            <div class="row margin-top-05">
+                                                <div class="col-md-10">
+                                                    <label for="lstCategories">Proizvod će se prikazivati u sledećim kategorijama:</label>
+                                                    <asp:ListBox ID="lstCategories" runat="server" CssClass="form-control"></asp:ListBox>
+                                                </div>
+                                                <div class="col-md-2 margin-top-1-5">
+                                                    <asp:Button ID="btnRemoveProductFromCategory" runat="server" CssClass="btn btn-primary" OnClick="btnRemoveProductFromCategory_Click" Text="Obriši" CausesValidation="false" />
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

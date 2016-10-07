@@ -29,6 +29,7 @@ namespace webshopAdmin
                     int orderID = 0;
                     if (Request.QueryString.ToString().Contains("orderID"))
                     {
+                        loadIntoForm();
                         loadStatuses();
                         orderID = int.Parse(Request.QueryString["orderID"]);
                         loadOrder(orderID);
@@ -77,6 +78,11 @@ namespace webshopAdmin
             }
 
             lblTotal.Text = string.Format("{0:N2}", total);
+
+            //eshopBE.User user = UserBL.GetUser(order.User.UserID, string.Empty);
+            //double userDiscountValue = user.DiscountTypeID == 1 ? total * user.Discount / 100 : user.Discount;
+            lblDiscount.Text = string.Format("{0:N2}", order.UserDiscountValue);
+            lblTotalWithDiscount.Text = string.Format("{0:N2}", total - order.UserDiscountValue);
         }
 
         private void loadStatuses()
@@ -269,6 +275,46 @@ namespace webshopAdmin
                 HyperLink lnkProduct = (HyperLink)e.Row.FindControl("lnkProduct");
                 lnkProduct.NavigateUrl = "~/proizvodi/" + Common.CreateFriendlyUrl(((Label)e.Row.FindControl("lblCategory")).Text + "/" + ((Label)e.Row.FindControl("lblProductName")).Text + "-" + ((Label)e.Row.FindControl("lblProductID")).Text);
             }
+        }
+
+        private void loadIntoForm()
+        {
+            cmbDiscountType.Items.Add(new ListItem("%", "1"));
+            cmbDiscountType.Items.Add(new ListItem("din", "2"));
+
+            divOrderDiscount.Visible = bool.Parse(ConfigurationManager.AppSettings["orderDiscountVisible"]);
+        }
+
+        protected void btnAddDiscount_Click(object sender, EventArgs e)
+        {
+            if(txtDiscount.Text.Trim() != string.Empty)
+            {
+                double discount = 0;
+                double.TryParse(txtDiscount.Text, out discount);
+                double discountValue = cmbDiscountType.SelectedValue == "1" ? double.Parse(lblTotal.Text) * discount / 100 : discount;
+
+                Order order = new Order();
+                order.OrderID = int.Parse(lblOrderID.Value);
+                order.Email = lblEmail.Text;
+                order.Firstname = lblFirstname.Text;
+                order.Lastname = lblLastname.Text;
+                order.UserDiscountValue = discountValue;
+                order.Code = lblCode.Text;
+                order.Date = DateTime.Parse(lblDate.Text);
+
+                new OrderBL().SetDiscount(order);
+
+                loadOrder(int.Parse(lblOrderID.Value));
+
+                setStatus("Popust uspešno dodeljen", "success");
+            }
+        }
+
+        private void setStatus(string message, string classes)
+        {
+            customStatus.Text = message;
+            customStatus.Class = "alert alert-" + classes + " status";
+            customStatus.Show();
         }
     }
 }

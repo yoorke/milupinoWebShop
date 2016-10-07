@@ -47,7 +47,10 @@ namespace eshopv2.user_controls
                 else if (Membership.GetUser() != null)
                     userID = int.Parse(Membership.GetUser().ProviderUserKey.ToString());
                 else userID = 42;
-                Order order = createOrder(userID);
+
+                User user = UserBL.GetUser(userID, string.Empty);
+                Order order = createOrder(user);
+
                 
 
                 Common.SendOrderConfirmationMail(txtEmail.Text, txtFirstname.Text + " " + txtLastname.Text, order);
@@ -73,7 +76,7 @@ namespace eshopv2.user_controls
             return items;
         }
 
-        private Order createOrder(int userID)
+        private Order createOrder(User user)
         {
             Order order = new Order();
             order.Date = DateTime.Now.ToUniversalTime();
@@ -84,7 +87,8 @@ namespace eshopv2.user_controls
             order.Phone = txtPhone.Text;
             order.Email = txtEmail.Text;
             order.Items = getItems();
-            order.User = new User(userID, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, null, string.Empty, string.Empty, DateTime.Now, string.Empty);
+            //order.User = new User(userID, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, null, string.Empty, string.Empty, DateTime.Now, string.Empty, 0, 1);
+            order.User = user;
             order.Name = (rdbUserType.SelectedValue == "2") ? txtCompanyName.Text : string.Empty;
             order.Pib = (rdbUserType.SelectedValue == "2") ? txtPib.Text : string.Empty;
             order.Payment = (order.Name != string.Empty) ? new Payment(int.Parse(rdbPaymentCompany.SelectedValue), rdbPaymentCompany.SelectedItem.Text) : new Payment(int.Parse(rdbPayment.SelectedValue.ToString()), rdbPayment.SelectedItem.Text);
@@ -96,6 +100,14 @@ namespace eshopv2.user_controls
             order.Comment = txtRemark.Text;
             order.CartID = Session["cartID"].ToString();
 
+            double total = 0;
+            foreach (OrderItem item in order.Items)
+                if(!bool.Parse(ConfigurationManager.AppSettings["userDiscountOnlyOnProductNotOnPromotion"]) || item.ProductPrice == item.UserPrice)
+                    total += item.UserPrice * item.Quantity;
+
+            order.UserDiscountValue = user.DiscountTypeID == 1 ? total * user.Discount / 100 : user.Discount;
+
+            
 
             OrderBL orderBL = new OrderBL();
             orderBL.SaveOrder(order);

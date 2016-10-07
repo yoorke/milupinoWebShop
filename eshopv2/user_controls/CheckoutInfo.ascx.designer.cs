@@ -22,24 +22,6 @@ namespace eshopv2.user_controls {
         protected global::System.Web.UI.WebControls.Label lblNumberOfProducts;
         
         /// <summary>
-        /// lblTaxBase control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTaxBase;
-        
-        /// <summary>
-        /// lblPdv control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPdv;
-        
-        /// <summary>
         /// lblTotalWithTax control.
         /// </summary>
         /// <remarks>
@@ -56,6 +38,33 @@ namespace eshopv2.user_controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblDiscount;
+        
+        /// <summary>
+        /// lblTotalWithDiscount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTotalWithDiscount;
+        
+        /// <summary>
+        /// lblTaxBase control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTaxBase;
+        
+        /// <summary>
+        /// lblPdv control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPdv;
         
         /// <summary>
         /// lblDelivery control.

@@ -436,6 +436,15 @@ namespace webshopAdmin {
         protected global::System.Web.UI.WebControls.DropDownList cmbCategory;
         
         /// <summary>
+        /// divProductInMultipleCategories control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divProductInMultipleCategories;
+        
+        /// <summary>
         /// cmbCategories control.
         /// </summary>
         /// <remarks>
@@ -461,6 +470,15 @@ namespace webshopAdmin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ListBox lstCategories;
+        
+        /// <summary>
+        /// btnRemoveProductFromCategory control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnRemoveProductFromCategory;
         
         /// <summary>
         /// pnlAttributes control.

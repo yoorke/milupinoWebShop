@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/webshopAdmin/adminPanel.Master" AutoEventWireup="true" CodeBehind="order.aspx.cs" Inherits="webshopAdmin.order" Title="Untitled Page" %>
+<%@ Register Src="customControls/customStatus.ascx" TagName="customStatus" TagPrefix="YT" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -17,6 +18,11 @@
                 </div><!--btn-group-->
             </div><!--col-->
         </div><!--row-->
+        <div class="row margin-top-05">
+            <div class="col-lg-12">
+                <YT:customStatus ID="customStatus" runat="server" />
+            </div>
+        </div>
         <div class="row margin-top-2">
             <div class="col-sm-4">
                 <div role="form" class="form-horizontal">
@@ -205,11 +211,58 @@
             </div><!--col-->
         </div><!--row-->
         <div class="row">
-            <div class="col-lg-2 pull-right">
-                <label for="lblTotal">Ukupno: </label>
-                <asp:Label ID="lblTotal" runat="server" CssClass="form-control text-right alert-info"></asp:Label>    
-            </div><!--col-->
+            <div class="col-lg-3">
+                <div id="divOrderDiscount" runat="server" class="background-gray padding-05">
+                    <div class="row">
+                    
+                        <div class="col-lg-8">
+                            <label for="txtDiscount">Popust: </label>
+                            <asp:TextBox ID="txtDiscount" runat="server" CssClass="form-control text-right"></asp:TextBox>
+                        </div>
+                        <div class="col-lg-4">
+                            <label for="cmbDiscountType">Tip:</label>
+                            <asp:DropDownList ID="cmbDiscountType" runat="server" CssClass="form-control"></asp:DropDownList>
+                        </div>                   
+                    </div>
+                
+                    <div class="row">
+                        <div class="col-lg-12 margin-top-05">
+                            <asp:Button ID="btnAddDiscount" runat="server" CssClass="btn btn-primary width-100" Text="Dodeli popust" OnClick="btnAddDiscount_Click" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="row">
+                    <div class="col-lg-3 pull-right">
+                        <label for="lblTotal">Ukupno: </label>
+                        <asp:Label ID="lblTotal" runat="server" CssClass="form-control text-right alert-info"></asp:Label>    
+                    </div><!--col-->
+                </div>
+                <div class="row">
+                    <div class="col-lg-3 pull-right">
+                        <label for="lblDiscount">Popust: </label>
+                        <asp:Label ID="lblDiscount" runat="server" CssClass="form-control text-right alert-info"></asp:Label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3 pull-right">
+                        <label for="lblTotalWithDiscount">Ukupno sa popustom: </label>
+                        <asp:Label ID="lblTotalWithDiscount" runat="server" CssClass="form-control text-right alert-info"></asp:Label>
+                    </div>
+                </div>
+            </div>
+            
+            
         </div><!--row-->
+        <div class="row">
+            
+            
+            
+        </div>
+        <div class="row">
+            
+        </div>
     </div><!--page-wrapper-->
     
     

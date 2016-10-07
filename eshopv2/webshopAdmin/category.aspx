@@ -58,7 +58,7 @@
                                     <div class="form-group background-gray padding-05">
                                         <div class="row">
                                             <div class="col-lg-12">
-                                                <label for="txtImageUrl">Image url:</label>
+                                                <label for="txtImageUrl">Slika kategorije:</label>
                                             </div>
                                         </div>
                                         <div class="row">

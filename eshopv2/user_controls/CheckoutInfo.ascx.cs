@@ -10,6 +10,8 @@ using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Xml.Linq;
+using eshopBL;
+using eshopBE;
 
 namespace eshopv2.user_controls
 {
@@ -39,25 +41,50 @@ namespace eshopv2.user_controls
             double discount = 0;
             double delivery = 0;
             double total = 0;
+            double userDiscount = 0;
+            CouponType discountType = new CouponType(1, "Procentualni");
+            double totalForDiscount = 0;
+
+            if(Page.User.Identity.IsAuthenticated)
+            {
+                eshopBE.User user = UserBL.GetUser(-1, Page.User.Identity.Name);
+                userDiscount = user.Discount;
+                discountType = new CouponBL().GetCouponType(user.DiscountTypeID);
+            }
 
             for (int i = 0; i < _cart.Rows.Count; i++)
             {
                 cartTotal += double.Parse(_cart.Rows[i]["productPrice"].ToString()) * double.Parse(_cart.Rows[i]["quantity"].ToString());
                 discount += double.Parse(_cart.Rows[i]["productPrice"].ToString()) * double.Parse(_cart.Rows[i]["quantity"].ToString()) - double.Parse(_cart.Rows[i]["total"].ToString());
+                totalForDiscount += !bool.Parse(ConfigurationManager.AppSettings["userDiscountOnlyOnProductNotOnPromotion"]) || double.Parse(_cart.Rows[i]["productPrice"].ToString()) == double.Parse(_cart.Rows[i]["userPrice"].ToString()) ? double.Parse(_cart.Rows[i]["productPrice"].ToString()) * double.Parse(_cart.Rows[i]["quantity"].ToString()) : 0;
             }
             lblNumberOfProducts.Text = _cart.Rows.Count.ToString();
 
-            taxBase = cartTotal / 1.2;
-            tax = cartTotal - taxBase;
 
-            delivery = (cartTotal > 10000) ? 0 : 350;
+            double userDiscountValue = (discountType.CouponTypeID == 1) ? (totalForDiscount) * (userDiscount / 100) : userDiscount;
 
-            total = cartTotal - discount + delivery;
+            double totalWithDiscount = cartTotal - discount - userDiscountValue;
+
+            taxBase = (cartTotal - discount - userDiscountValue) / 1.2;
+            tax = cartTotal - discount - userDiscountValue - taxBase;
+
+            
+
+            delivery = (cartTotal - discount - userDiscountValue> double.Parse(ConfigurationManager.AppSettings["freeDeliveryTotalValue"])) ? 0 : double.Parse(ConfigurationManager.AppSettings["deliveryCost"]);
+
+            
+
+            total = cartTotal - discount + delivery - userDiscountValue;
+
+            
 
             lblTaxBase.Text = string.Format("{0:N2}", taxBase);
             lblPdv.Text = string.Format("{0:N2}", tax);
-            lblTotalWithTax.Text = string.Format("{0:N2}", taxBase + tax);
-            lblDiscount.Text = string.Format("-{0:N2}", discount);
+            lblTotalWithTax.Text = string.Format("{0:N2}", cartTotal);
+            double totalDiscount = discount + userDiscountValue;
+            lblDiscount.Text = string.Format("{0:N2}", (0 - totalDiscount));
+            lblTotalWithDiscount.Text = string.Format("{0:N2}", totalWithDiscount);
+            //lblDiscount.Text = "42423424";
             lblDelivery.Text = string.Format("{0:N2}", delivery);
             lblTotal.Text = string.Format("{0:N2}", total);
         }
