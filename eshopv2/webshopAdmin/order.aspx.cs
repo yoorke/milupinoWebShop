@@ -237,8 +237,8 @@ namespace webshopAdmin
 
             html.Append("<div style='float:right;padding:0.5em;background-color:#eeeeee;margin-top:20px'>");
             html.Append("<div><strong>Ukupno:</strong> " + lblTotal.Text + "</div>");
-            html.Append("<div><strong>Dostava:</strong> " + (double.Parse(lblTotal.Text) > 10000 ? "0,00" : "350,00") + "</div>");
-            html.Append("<div><strong>Ukupno:</strong> " + string.Format("{0:N2}", (double.Parse(lblTotal.Text) + (double.Parse(lblTotal.Text) > 10000 ? 0 : 350))) + "</div>");
+            html.Append("<div><strong>Dostava:</strong> " + (double.Parse(lblTotal.Text) > double.Parse(ConfigurationManager.AppSettings["freeDeliveryTotalValue"]) ? "0,00" : string.Format("{0:N2}", double.Parse(ConfigurationManager.AppSettings["deliveryCost"]))) + "</div>");
+            html.Append("<div><strong>Ukupno:</strong> " + string.Format("{0:N2}", (double.Parse(lblTotal.Text) + (double.Parse(lblTotal.Text) > double.Parse(ConfigurationManager.AppSettings["freeDeliveryTotalValue"]) ? 0 : double.Parse(ConfigurationManager.AppSettings["deliveryCost"])))) + "</div>");
             html.Append("</div>");
 
             html.Append("</body></html>");

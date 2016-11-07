@@ -90,7 +90,7 @@ namespace eshopv2.user_controls
             if (HttpContext.Current.User.Identity.IsAuthenticated && Roles.IsUserInRole(HttpContext.Current.User.Identity.Name, "Administrator"))
             {
                 lnkEditProduct.Visible = true;
-                lnkEditProduct.NavigateUrl = "/administrator/product.aspx?id=" + _product.ProductID;
+                lnkEditProduct.NavigateUrl = "/" + ConfigurationManager.AppSettings["webshopAdminUrl"] + "/product.aspx?id=" + _product.ProductID;
             }
         }
 

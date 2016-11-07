@@ -97,6 +97,8 @@ namespace eshopv2
             lnkCategory.Text = product.Categories[0].Name;
             ViewState["productUrl"] = product.Url;
             loadProductSliders(product.Brand, product.Categories[0]);
+
+            txtAvailability.Text = product.IsInStock ? "Na stanju" : "Nema na stanju";
         }
 
         protected void btnCart_Click(object sender, EventArgs e)

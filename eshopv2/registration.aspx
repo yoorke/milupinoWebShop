@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Registracija korisnika | Milupino" Language="C#" MasterPageFile="~/eshop2.Master" AutoEventWireup="true" CodeBehind="registration.aspx.cs" Inherits="eshopv2.registration" %>
+﻿<%@ Page Title="Registracija korisnika | Milupino" Language="C#" MasterPageFile="~/eshop2.Master" AutoEventWireup="true" CodeBehind="registration.aspx.cs" Inherits="eshopv2.registration" EnableViewState="False" %>
 <%@ Register Assembly="BotDetect" Namespace="BotDetect.Web.UI" TagPrefix="BotDetect" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>

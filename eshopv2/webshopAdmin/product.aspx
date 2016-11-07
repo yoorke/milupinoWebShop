@@ -40,7 +40,7 @@
         
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Proizvod</h1>
+                <h1 class="page-header"><asp:Literal ID="lblPageHeader" runat="server" Text="Proizvod"></asp:Literal></h1>
             </div><!--col-->
         </div><!--row-->
         <div class="row">

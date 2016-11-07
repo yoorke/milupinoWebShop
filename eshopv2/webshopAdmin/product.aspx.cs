@@ -133,7 +133,7 @@ namespace webshopAdmin
 
             CategoryBL categoryBL = new CategoryBL();
             //cmbCategory.DataSource = categoryBL.GetCategories();
-            cmbCategory.DataSource = categoryBL.GetNestedCategoriesDataTable(false, true);
+            cmbCategory.DataSource = categoryBL.GetNestedCategoriesDataTable(true, true);
             cmbCategory.DataTextField = "name";
             cmbCategory.DataValueField = "categoryID";
             cmbCategory.DataBind();
@@ -220,6 +220,7 @@ namespace webshopAdmin
             ViewState.Add("pageTitle", Page.Title);
             txtSupplierPrice.Text = string.Format("{0:N2}", product.SupplierPrice);
             cmbUnitOfMeasure.SelectedValue = product.UnitOfMeasure.UnitOfMeasureID.ToString();
+            lblPageHeader.Text = product.Name;
 
             if (product.Promotion != null)
             {
@@ -252,6 +253,14 @@ namespace webshopAdmin
                     }
                 }
                 btnAddProductToCategory.Enabled = true;
+
+                if(product.Categories.Count > 1)
+                {
+                    for(int j = 1; j < product.Categories.Count; j++)
+                    {
+                        lstCategories.Items.Add(new ListItem(product.Categories[j].Name, product.Categories[j].CategoryID.ToString()));
+                    }
+                }
             }
 
             if (product.Images != null)
