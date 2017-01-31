@@ -139,6 +139,24 @@ namespace eshopv2.user_controls {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divButtons;
         
         /// <summary>
+        /// btnCart control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlButton btnCart;
+        
+        /// <summary>
+        /// txtTooltip control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl txtTooltip;
+        
+        /// <summary>
         /// btnDetails control.
         /// </summary>
         /// <remarks>

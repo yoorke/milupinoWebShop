@@ -99,6 +99,13 @@ namespace eshopv2
             loadProductSliders(product.Brand, product.Categories[0]);
 
             txtAvailability.Text = product.IsInStock ? "Na stanju" : "Nema na stanju";
+            btnCartAjax.Attributes.Add("onclick", "AddToCart('" + lblProductID.ClientID + "')");
+
+            if (!product.IsInStock)
+            { 
+                btnCartAjax.Attributes.Add("class", "btnAddToCart notInStock tooltipwrapper");
+                txtTooltip.InnerText = "NEMA NA STANJU";
+            }
         }
 
         protected void btnCart_Click(object sender, EventArgs e)

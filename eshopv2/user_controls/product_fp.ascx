@@ -29,7 +29,9 @@
         </div>
         <div class="buttons" id="divButtons" runat="server" style="display:none">
             <%--<asp:LinkButton ID="btnCart" runat="server" CssClass="btn_cart" OnClick="btnCart_Click" Text=""></asp:LinkButton>--%>
-            <button type="button" id="btnCart" class="btn_cart" onclick="AddToCart('<%=lblProductID.ClientID %>')"></button>
+            <button type="button" id="btnCart" class="btn_cart" onclick="AddToCart('<%=lblProductID.ClientID %>')" runat="server">
+                <span id="txtTooltip" class="tooltiptext" runat="server"></span>
+            </button>
             <!--<asp:LinkButton ID="btnDetails" runat="server" Text="Detalji" CssClass="btn_details"></asp:LinkButton>-->
             <asp:HyperLink ID="lblDetails" runat="server" Text="Detalji" CssClass="btn_details"></asp:HyperLink>
             <%--<asp:LinkButton ID="btnCompare" runat="server" Text="Uporedi" CssClass="btn_compare" OnClientClick="function(){ $('#messageBoxCompare').show()}"></asp:LinkButton>--%>

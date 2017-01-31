@@ -92,6 +92,14 @@ namespace eshopv2.user_controls
                 lnkEditProduct.Visible = true;
                 lnkEditProduct.NavigateUrl = "/" + ConfigurationManager.AppSettings["webshopAdminUrl"] + "/product.aspx?id=" + _product.ProductID;
             }
+
+            btnCart.Attributes.Add("onclick", "AddToCart('" + lblProductID.ClientID + "')");
+            if (!_product.IsInStock)
+            { 
+                btnCart.Attributes.Add("class", "btn_cart notInStock tooltipwrapper");
+                txtTooltip.InnerText = "NEMA NA STANJU";
+                txtTooltip.Attributes.Add("class", "tooltiptext font-06em");
+            }
         }
 
         protected void btnCart_Click(object sender, EventArgs e)

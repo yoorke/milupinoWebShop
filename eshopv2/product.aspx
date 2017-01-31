@@ -61,7 +61,11 @@
                         <p class="font-2em color-blue bold margin-bottom-0"><asp:Label ID="lblWebPrice" runat="server" Text="99.890 din"></asp:Label></p>
                         <p><asp:Literal ID="lblSaving" runat="server" Text="Ušteda: 2.548,00 din"></asp:Literal></p>
                         <!--<asp:Button ID="btnCart" runat="server" CssClass="btnAddToCart" Text="Dodaj u korpu" OnClick="btnCart_Click" />-->
-                        <button type="button" id="btnCart" class="btnAddToCart" onclick="AddToCart('<%=lblProductID.ClientID %>')">Dodaj u korpu</button>
+                        <button type="button" id="btnCartAjax" class="btnAddToCart" onclick="AddToCart('<%=lblProductID.ClientID %>')" runat="server">
+                            <span class="glyphicon glyphicon-shopping-cart"></span>
+                            <span class="text">Dodaj u korpu</span>
+                            <span class="tooltiptext" runat="server" id="txtTooltip"></span>
+                        </button>
                     </div>
                 </div><!--row-->
                 <div class="row icons">
