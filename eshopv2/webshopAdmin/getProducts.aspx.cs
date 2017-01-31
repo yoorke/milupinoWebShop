@@ -327,6 +327,8 @@ namespace webshopAdmin
             if (cmbCategory.SelectedIndex > -1)
             {
                 lstCategory.Items.Clear();
+                dgvProducts.DataSource = null;
+                dgvProducts.DataBind();
                 EweBL eweBL=new EweBL();
                 int eweCategoryID = eweBL.GetEweCategoryForCategory(int.Parse(cmbCategory.SelectedValue));
                 if (eweCategoryID > 0)
@@ -350,8 +352,8 @@ namespace webshopAdmin
                 subcategories += lstCategory.Items[i].Text + "|";
             }
             subcategories = subcategories.Remove(subcategories.Length - 1, 1);
-            int productsCount = new EweBL().ParseProductsForSaving(cmbEweCategory.SelectedItem.Text, subcategories.Split('|'));
-            SetStatus("Učitano " + productsCount.ToString() + " proizvoda", System.Drawing.Color.Green, true, "success");
+            int productsCount = new EweBL().ParseProductsForSaving(cmbEweCategory.SelectedItem.Text, subcategories.Split('|'), int.Parse(cmbCategory.SelectedValue), int.Parse(cmbEweCategory.SelectedValue));
+            SetStatus("Preuzeto " + productsCount.ToString() + " proizvoda", System.Drawing.Color.Green, true, "success");
 
             //save ewe category for category
             EweBL eweBL = new EweBL();

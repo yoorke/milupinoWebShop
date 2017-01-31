@@ -8,7 +8,7 @@
         
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Kategorija <asp:Literal ID="lblCategoryName" runat="server"></asp:Literal></h1>
+                <h1 class="page-header">Kategorija: <asp:Literal ID="lblCategoryName" runat="server"></asp:Literal></h1>
             </div>
         </div>
         <div class="row margin-top-2">
@@ -157,21 +157,27 @@
                                         </ItemTemplate>
                                     </asp:TemplateField>
                         
-                                    <asp:TemplateField HeaderText="Filter" ControlStyle-Width="50px">
+                                    <asp:TemplateField HeaderText="Filter" ControlStyle-Width="30px" ItemStyle-Width="30px">
                                         <ItemTemplate>
                                             <asp:CheckBox ID="chkFilter" runat="server" Checked='<%#Eval("filter") %>' OnCheckedChanged="chkFilter_CheckedChanged" AutoPostBack="true" />
                                         </ItemTemplate>
                                     </asp:TemplateField>
                         
-                                    <asp:TemplateField HeaderText="Opis" ControlStyle-Width="50px">
+                                    <asp:TemplateField HeaderText="Opis" ControlStyle-Width="30px" ItemStyle-Width="30px">
                                         <ItemTemplate>
                                             <asp:CheckBox ID="chkIsDescription" runat="server" Checked='<%#Eval("isDescription") %>' OnCheckedChanged="chkIsDescription_CheckedChanged" AutoPostBack="true" />
                                         </ItemTemplate>
                                     </asp:TemplateField>
                         
-                                    <asp:TemplateField HeaderText="Pozicija" ControlStyle-Width="50px">
+                                    <asp:TemplateField HeaderText="Pozicija" ControlStyle-Width="30px" ItemStyle-Width="30px">
                                         <ItemTemplate>
                                             <asp:TextBox ID="txtPosition" runat="server" Text='<%#Eval("position") %>'></asp:TextBox>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                    <asp:TemplateField HeaderText="Vrednosti" ControlStyle-Width="30px" ItemStyle-Width="30px">
+                                        <ItemTemplate>
+                                            <asp:Hyperlink ID="lnkValues" runat="server" NavigateUrl='<%# "/" + ConfigurationManager.AppSettings["webshopAdminUrl"] + "/attribute.aspx?id=" + Eval("attributeID") + "&tab=vrednosti"%>' Text="Vrednosti" Target="_blank"></asp:Hyperlink>
                                         </ItemTemplate>
                                     </asp:TemplateField>
                         

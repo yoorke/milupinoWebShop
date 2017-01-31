@@ -83,7 +83,7 @@
                 </asp:Panel>    
             </div><!--col-->
         </div><!--row-->
-        <div class="row">
+        <div class="row margin-top-05">
             <div class="col-lg-12">
                 <uc1:CustomStatus ID="csStatus" runat="server" />
             </div>

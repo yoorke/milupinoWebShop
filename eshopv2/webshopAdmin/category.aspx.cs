@@ -39,6 +39,7 @@ namespace webshopAdmin
                 else
                 {
                     Page.Title = (ViewState["pageTitle"] != null) ? ViewState["pageTitle"].ToString() : "Kategorija";
+                    lblCategoryName.Text = ViewState["categoryName"] != null ? ViewState["categoryName"].ToString() : string.Empty;
                     lblTabName.Value = Request.Form[lblTabName.UniqueID];
                 }
 
@@ -175,7 +176,8 @@ namespace webshopAdmin
             chkExportProducts.Checked = category.ExportProducts;
 
             imgIcon.ImageUrl = category.ImageUrl != string.Empty ? Server.MapPath("~/images/" + category.ImageUrl) : "~/images/no-image.jpg";
-
+            lblCategoryName.Text = category.Name;
+            ViewState.Add("categoryName", category.Name);
 
             if (lblCategoryID.Value != string.Empty)
             {

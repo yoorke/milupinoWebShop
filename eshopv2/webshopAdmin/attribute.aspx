@@ -24,6 +24,7 @@
             </div>
         </div><!--row-->
         <div class="row margin-top-2">
+            <asp:HiddenField ID="lblTabName" runat="server" />
             <div class="col-lg-12">
                 <ul class="nav nav-tabs" id="tabs" data-tabs="tabs">
                     <li class="active"><a href="#atribut" data-toggle="tab">Atribut</a></li>
@@ -155,4 +156,13 @@
     
     </div>--%>
 
+</asp:Content>
+<asp:Content ID="content3" ContentPlaceHolderID="ContentPlaceHolderFooter" runat="server">
+    <script>
+        var tabName = $('[id*=TabName]').val() != '' ? $('[id*=TabName]').val() : 'atribut';
+        $('#tabs a[href="#' + tabName + '"]').tab('show');
+        $('#tabs a').click(function () {
+            $('[id*=TabName]').val($(this).attr('href').replace('#', ''));
+        })
+    </script>
 </asp:Content>

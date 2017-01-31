@@ -28,6 +28,8 @@ namespace webshopAdmin
                         int attributeID = int.Parse(Page.Request.QueryString["id"]);
                         loadAttribute(attributeID);
                     }
+                    if (Page.Request.QueryString.ToString().Contains("tab"))
+                        lblTabName.Value = Page.Request.QueryString["tab"];
                 }
             }
             else
@@ -65,6 +67,8 @@ namespace webshopAdmin
             chkIsDescription.Checked = attribute.IsDescription;
 
             loadValues();
+
+            
         }
 
         protected void btnSaveAttribute_Click(object sender, EventArgs e)

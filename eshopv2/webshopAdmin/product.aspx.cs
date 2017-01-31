@@ -119,7 +119,7 @@ namespace webshopAdmin
                     }
 
                     Page.Title = ViewState["pageTitle"].ToString();
-
+                    lblPageHeader.Text = ViewState["productName"].ToString();
                     TabName.Value = Request.Form[TabName.UniqueID];
                 }
             }
@@ -221,6 +221,7 @@ namespace webshopAdmin
             txtSupplierPrice.Text = string.Format("{0:N2}", product.SupplierPrice);
             cmbUnitOfMeasure.SelectedValue = product.UnitOfMeasure.UnitOfMeasureID.ToString();
             lblPageHeader.Text = product.Name;
+            ViewState.Add("productName", product != null ? product.Name : string.Empty);
 
             if (product.Promotion != null)
             {

@@ -477,6 +477,7 @@
     
     </form>
     <div id="mainMenuVerticalBackground" class="mainMenuVerticalBackground" style="display:none"></div>
+    <a href="#0" class="cd-top">Top</a>
     
     <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>-->
     <script src="<%=ResolveUrl("~/js/jquery-1.11.3.min.js") %>"></script>
@@ -510,6 +511,7 @@
     <script src="<%=ResolveUrl("~/js/jquery.menu-aim.js") %>"></script>
     <script src="<%=ResolveUrl("~/js/main.js") %>"></script>
     <script src="<%=ResolveUrl("~/js/jquery.tmpl.min.js") %>"></script>
+    <script src="<%=ResolveUrl("~/js/backtotop.js") %>"></script>
     <script id="dgvCartItemsTemplate" type="text/x-jquery-tmpl">
         <tr>
             <%--<td><img src="${imageUrl.substring(0, imageUrl.indexOf('.jpg')) + '-small.jpg'}" /></td>--%>
