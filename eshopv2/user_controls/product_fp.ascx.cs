@@ -99,6 +99,13 @@ namespace eshopv2.user_controls
                 btnCart.Attributes.Add("class", "btn_cart notInStock tooltipwrapper");
                 txtTooltip.InnerText = "NEMA NA STANJU";
                 txtTooltip.Attributes.Add("class", "tooltiptext font-06em");
+
+                if (!bool.Parse(ConfigurationManager.AppSettings["allowOrderIfNotInStock"]))
+                { 
+                    //btnCart.Attributes.Add("disabled", "true");
+                    btnCart.Attributes.Add("onclick", "");
+                    btnCart.Attributes.Add("class", btnCart.Attributes["class"] + " cursor-default");
+                }
             }
         }
 

@@ -119,7 +119,7 @@ namespace webshopAdmin
                     }
 
                     Page.Title = ViewState["pageTitle"].ToString();
-                    lblPageHeader.Text = ViewState["productName"].ToString();
+                    lblPageHeader.Text = ViewState["productName"] != null ? ViewState["productName"].ToString() : "Proizvod";
                     TabName.Value = Request.Form[TabName.UniqueID];
                 }
             }

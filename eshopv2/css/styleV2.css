@@ -135,6 +135,10 @@ body
 	cursor:pointer;
 }
 
+.cursor-default{
+    cursor:default;
+}
+
 .underline
 {
     text-decoration:underline;

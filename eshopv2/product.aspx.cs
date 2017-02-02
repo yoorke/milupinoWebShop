@@ -105,6 +105,9 @@ namespace eshopv2
             { 
                 btnCartAjax.Attributes.Add("class", "btnAddToCart notInStock tooltipwrapper");
                 txtTooltip.InnerText = "NEMA NA STANJU";
+
+                if (!bool.Parse(ConfigurationManager.AppSettings["allowOrderIfNotInStock"]))
+                    btnCartAjax.Attributes.Add("disabled", "true");
             }
         }
 
