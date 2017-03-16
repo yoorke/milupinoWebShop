@@ -65,6 +65,7 @@ namespace eshopv2.user_controls
                         pnlThumbs.Controls.Add(new LiteralControl("</div>"));
                     }
                 }
+                setImagesForLightBox();
             }
             else
                 imgMain.ImageUrl = "/images/no-image.jpg";
@@ -75,5 +76,25 @@ namespace eshopv2.user_controls
             ImageButton image = (ImageButton)sender;
             imgMain.ImageUrl = image.ImageUrl;
         }*/
+
+        private void setImagesForLightBox()
+        {
+            List<ProductImage> tempImages = _images;
+            tempImages.RemoveAt(0);
+            rptImages.DataSource = tempImages;
+            rptImages.DataBind();
+        }
+
+        protected void rptImages_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        {
+            if(e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+            {
+                HyperLink imageLink = ((HyperLink)e.Item.FindControl("lnkImage"));
+                string filename = imageLink.NavigateUrl.Substring(0, imageLink.NavigateUrl.LastIndexOf('.'));
+                string extension = imageLink.NavigateUrl.Substring(imageLink.NavigateUrl.LastIndexOf('.'));
+                imageLink.NavigateUrl = new ProductBL().CreateImageDirectory(int.Parse(filename)) + filename + extension;
+                imageLink.Attributes["data-lightbox"] = "mainImage";
+            }
+        }
     }
 }

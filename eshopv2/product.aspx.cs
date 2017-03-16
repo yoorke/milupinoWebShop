@@ -91,7 +91,7 @@ namespace eshopv2
             Page.Title = product.Brand.Name + " " + product.Name;
             ViewState.Add("pageTitle", Page.Title);
             ViewState.Add("productDescription", product.Description);
-            ViewState.Add("image", product.Images != null ? product.Images[0].ImageUrl : string.Empty);
+            ViewState.Add("image", product.Images != null && product.Images.Count > 0 ? product.Images[0].ImageUrl : string.Empty);
 
             lnkCategory.NavigateUrl = "/proizvodi/" + product.Categories[0].Url;
             lnkCategory.Text = product.Categories[0].Name;

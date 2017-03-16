@@ -43,6 +43,7 @@ namespace eshopv2.user_controls
             lblWebPrice.Text = string.Format("{0:N2}", _product.WebPrice);
             lblSpecification.Text = _product.Specification;
             lblProductID.Value = _product.ProductID.ToString();
+            lblDescription.Text = _product.Description;
         }
     }
 }

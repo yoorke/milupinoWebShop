@@ -30,5 +30,10 @@
                 <asp:Literal ID="lblSpecification" runat="server"></asp:Literal>
             </div>
         </div>
+        <div class="description">
+            <div class="col-lg-12">
+                <asp:Literal ID="lblDescription" runat="server"></asp:Literal>
+            </div>
+        </div>
     </div>
 </div><!--row-->

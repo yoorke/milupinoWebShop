@@ -108,20 +108,23 @@ namespace webshopAdmin
 
         protected void dgvCategory_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            GridViewRow row = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);
-            int categoryID = int.Parse(((Label)row.Cells[0].FindControl("lblId")).Text);
-            switch (e.CommandName)
-            {
-                case "sortUp":
-                    {
-                        sort(categoryID, -1);
-                        break;
-                    }
-                case "sortDown":
-                    {
-                        sort(categoryID, 1);
-                        break;
-                    }
+            if(e.CommandSource is LinkButton)
+            { 
+                GridViewRow row = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);
+                int categoryID = int.Parse(((Label)row.Cells[0].FindControl("lblId")).Text);
+                switch (e.CommandName)
+                {
+                    case "sortUp":
+                        {
+                            sort(categoryID, -1);
+                            break;
+                        }
+                    case "sortDown":
+                        {
+                            sort(categoryID, 1);
+                            break;
+                        }
+                }
             }
         }
 

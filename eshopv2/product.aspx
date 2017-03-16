@@ -4,7 +4,8 @@
 <%@ Register Src="user_controls/product_slider.ascx" TagName="productSlider" TagPrefix="productSlider" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <!--<script type="text/javascript" src="/js/jquery-1.10.1.min.js"></script>-->
-    <link rel="stylesheet" type="text/css" media="all" href="<%# ResolveUrl("~/css/jquery.lightbox-0.5.css")  %>" />
+    <%--<link rel="stylesheet" type="text/css" media="all" href="<%# ResolveUrl("~/css/jquery.lightbox-0.5.css")  %>" />--%>
+    <link rel="stylesheet" type="text/css" href="<%=ResolveUrl("~/css/lightbox.css") %>" />
     <asp:Literal ID="canonicalUrl" runat="server"></asp:Literal>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -84,10 +85,10 @@
                     </div>
                     <div class="col-xs-3"><label onclick="AddToWishList()" class="cursor-pointer bold-none">Lista želja</label></div>
                     <div class="col-xs-1">
-                        <img src='<%=Page.ResolveUrl("~/images/recommend.gif") %>' />
+                        <%--<img src='<%=Page.ResolveUrl("~/images/recommend.gif") %>' />--%>
                         
                     </div>
-                    <div class="col-xs-3"><label onclick="recommend()" class="cursor-pointer bold-none">Preporučite</label></div>
+                    <%--<div class="col-xs-3"><label onclick="recommend()" class="cursor-pointer bold-none">Preporučite</label></div>--%>
                 </div><!--row-->
                 <div class="row margin-top-2">
                     <div class="col-lg-12 text-right">
@@ -221,11 +222,12 @@
 </asp:Content>
 
     <asp:Content ID="Content3" runat="server" ContentPlaceHolderID="ContentPlaceHolderFooter">
-    <script type="text/javascript" src="<%=ResolveUrl("~/js/jquery.lightbox-0.5.min.js") %>"></script>
+    <%--<script type="text/javascript" src="<%=ResolveUrl("~/js/jquery.lightbox-0.5.min.js") %>"></script>--%>
+        <script type="text/javascript" src="<%=ResolveUrl("~/js/lightbox.js") %>"></script>
     
     <script type="text/javascript">
-        jQuery(function() {
-            jQuery('#thumbnails a').lightBox();
-        });
+        //jQuery(function() {
+            //jQuery('#thumbnails a').lightBox();
+        //});
 </script>
 </asp:Content>

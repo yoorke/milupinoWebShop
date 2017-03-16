@@ -6,12 +6,20 @@
         <div class="row">
             <div class="col-lg-12">
                 <div id="thumbnails">
-                    <asp:HyperLink ID="lnkImage" runat="server" CssClass="mainImage">
-                        <asp:Image ID="imgMain" runat="server" CssClass="img-responsive" />
+                    <asp:HyperLink ID="lnkImage" runat="server" data-lightbox="mainImage">
+                        <asp:Image ID="imgMain" runat="server" CssClass="img-responsive main-image" />
                     </asp:HyperLink>
                 </div>
             </div>
         </div><!--row-->
+        <asp:Repeater ID="rptImages" runat="server" OnItemDataBound="rptImages_ItemDataBound">
+            <ItemTemplate>
+                <asp:HyperLink ID="lnkImage" runat="server" NavigateUrl='<%#Eval("imageUrl") %>'>
+                    <%--<asp:Image ID="imgImage" runat="server" ImageUrl='<%#Eval("imageUrl") %>' />--%>
+                </asp:HyperLink>
+            </ItemTemplate>
+        </asp:Repeater>
+        
 
         <%--<div class="row">--%>
             <asp:Panel ID="pnlThumbs" runat="server" CssClass="thumbsImages row"></asp:Panel>

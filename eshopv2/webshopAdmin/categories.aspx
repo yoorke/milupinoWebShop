@@ -63,7 +63,7 @@
                 </ItemTemplate>
             </asp:TemplateField>
             
-            <asp:CommandField ShowDeleteButton="true" DeleteText="" ControlStyle-Width="20px" DeleteImageUrl="images/delete_icon.png" ButtonType="Image" ItemStyle-Width="20px" />                
+            <asp:CommandField ShowDeleteButton="true" DeleteText="" ControlStyle-Width="20px" DeleteImageUrl="images/delete_icon.png" ButtonType="Image" ItemStyle-Width="20px" />
         </Columns>
     </asp:GridView>
             </div><!--col-->

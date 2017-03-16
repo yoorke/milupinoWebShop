@@ -117,11 +117,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="account.aspx" />
+    <Content Include="css\lightbox.css" />
     <Content Include="css\mainMenuVertical.css" />
     <Content Include="Default.aspx" />
     <Content Include="js\backtotop.js" />
     <Content Include="js\jquery-1.11.3.min.js" />
     <Content Include="js\jquery.menu-aim.js" />
+    <Content Include="js\lightbox.js" />
     <Content Include="js\main.js" />
     <Content Include="js\modernizr.js" />
     <Content Include="js\registration.js" />
