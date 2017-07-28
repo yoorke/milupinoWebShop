@@ -77,15 +77,15 @@
     </Reference>
     <Reference Include="eshopBE, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\WebShopFramework\eshopBE\bin\Debug\eshopBE.dll</HintPath>
+      <HintPath>C:\Korisnici\Web sajtovi\WebShopFramework\eshopBE\bin\Debug\eshopBE.dll</HintPath>
     </Reference>
     <Reference Include="eshopBL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\WebShopFramework\eshopBL\bin\Debug\eshopBL.dll</HintPath>
+      <HintPath>C:\Korisnici\Web sajtovi\WebShopFramework\eshopBL\bin\Debug\eshopBL.dll</HintPath>
     </Reference>
     <Reference Include="eshopUtilities, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\WebShopFramework\eshopUtilities\bin\Debug\eshopUtilities.dll</HintPath>
+      <HintPath>C:\Korisnici\Web sajtovi\WebShopFramework\eshopUtilities\bin\Debug\eshopUtilities.dll</HintPath>
     </Reference>
     <Reference Include="Intelligencia.UrlRewriter, Version=1.7.0.0, Culture=neutral">
       <SpecificVersion>False</SpecificVersion>

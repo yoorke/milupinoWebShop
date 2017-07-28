@@ -539,6 +539,7 @@ header {
     width: 280px;
     padding:0;
     margin:0;
+    list-style-type:none;
   }
   .cd-dropdown-content > li:last-of-type a {
     border-bottom: none;
