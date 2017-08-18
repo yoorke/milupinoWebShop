@@ -748,6 +748,10 @@ body
     padding:1em 0;
 }
 
+.footer-center a {
+    color: #999;
+}
+
 .footer-center .wrapper
 {
 	margin-left:0.1em;
