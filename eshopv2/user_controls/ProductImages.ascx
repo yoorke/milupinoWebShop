@@ -27,6 +27,10 @@
     <%--</ContentTemplate>
 </asp:UpdatePanel>--%>
 
+<div id="imgZoom" style="position:absolute;top:50px;left:500px;width:500px;height:315px;background-color:#000;display:none;border:1px solid #eee;z-index:999">
+
+</div>
+
 <script type="text/javascript">
     function changeImg(imageUrl)
     {
@@ -46,5 +50,8 @@
         //else
             //link.href = imageUrl.toString().substring(0, imageUrl.toString().indexOf("-thumb")) + ".jpg";
     }
+
+    
+
     
 </script>
